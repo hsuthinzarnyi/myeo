@@ -121,7 +121,8 @@
     </div> <!-- END OF SECOND DIV -->
 </form> <!-- END OF FORM -->
 </div> <!-- END OF FIRST DIV -->
-                                 <!--FOR NAV-->
+
+             <!-- ==========PAGE HEADER============ -->
 <div class="row" style="background-color: #004167;width:100%;position:fixed;top:0;">
    
     <span class="label_tag"> 
@@ -148,3 +149,4 @@
         </div>
    </span>
 </div> 
+           <!-- END OF PAGE HEADER -->

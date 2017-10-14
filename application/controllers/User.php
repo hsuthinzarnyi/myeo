@@ -85,7 +85,7 @@ class User extends CI_Controller
         { 
           $this->load->view('include/header') ;
           $this->load->view('home/login_page');
-          // $this->load->view('include/footer');
+          $this->load->view('include/footer');
         }
         else
         { 
