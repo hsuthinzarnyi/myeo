@@ -7,6 +7,8 @@
 	  <script type="text/javascript" src="<?php echo base_url();?>template/js/jquery.js"></script>
 	  <script type="text/javascript" src="<?php echo base_url();?>template/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/css/jquery.dataTables.css">
+    <script type="text/javascript" src="<?php echo base_url();?>asset/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asset/ckeditor/ckfinder.js"></script>
     <script src = "<?php echo base_url();?>jquery.com/jquery-1.10.2.js"></script>
     <script src = "<?php echo base_url();?>jquery.com/ui/1.10.4/jquery-ui.js"></script>
 

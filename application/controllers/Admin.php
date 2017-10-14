@@ -11,6 +11,8 @@
 			$this->load->library('form_validation');
 			$this->load->model('Admin_model');
 			$this->load->helper('form');
+			$this->load->library('ckeditor');
+            $this->load->library('ckfinder');
 		}
 		function index()
 		{
