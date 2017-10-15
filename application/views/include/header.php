@@ -117,16 +117,28 @@ $(function(){
 }
 
 /*=============ANCHOR LINK STYLE==========*/
-.row .nav .a{
+.row .nav a{
       text-decoration: none;
-      color: green;
+      font-size:20px;
+      color:#fff;
+      text-decoration:none;
+      margin: 20px;
     }
 .a:active{color: green;}
+
+.row .nav a:hover{
+  color: green;
+}
 /*=============END of ANCHOR LINK STYLE==========*/
 .font{font-style:;}
 
 /*=================FOOTER ====================*/
 
+<<<<<<< Updated upstream
+=======
+.page_footer{position: relative; 
+             }
+>>>>>>> Stashed changes
 
 .right_title{
   position: fixed;
