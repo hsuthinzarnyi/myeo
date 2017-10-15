@@ -8,9 +8,18 @@
 		function __construct()
 		{
 			parent::__construct();
-			$this->load->library('form_validation');
-			$this->load->model('Admin_model');
-			$this->load->helper('form');
+			$this->load->model('User_model','',TRUE);
+		    $this->load->library('form_validation');
+		    $this->load->model('Admin_model','',TRUE);
+		    $this->load->model('Custom_model','',TRUE);
+		    $this->load->model('Opportunity_model','',TRUE);
+		    $this->load->model('Profile_model','',TRUE);
+		    $this->load->model('Skill_model','',TRUE);
+		    $this->load->helper('form');
+		    $this->load->library('ckeditor');
+		    $this->load->library('ckfinder');
+		    $this->load->helper('security');
+		    $this->load->library('encrypt');
 		}
 		function index()
 		{

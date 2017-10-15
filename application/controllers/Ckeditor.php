@@ -15,7 +15,7 @@ class Ckeditor extends CI_Controller {
 		$this->load->helper('ckeditor');
 		$this->load->library('ckeditor');
         $this->load->library('ckfinder');
-        // $this->ckeditor->basePath=base_url().'asset/ckeditor/';
+        $this->ckeditor->basePath=base_url().'asset/ckeditor/';
         $this->ckeditor->config['toolbar']=array(
         	array('Source','-','Bold','Italic','Underline','-','Cut','Copy','Paste',
         		'PasteText','PastFromWorld','-','Undo','Redo','-','NumberedList','BulletedList'));

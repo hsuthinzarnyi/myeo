@@ -20,9 +20,9 @@
         </div>
         <div class="form-group">
             <label>DESCRIPTION:</label></br>
-            <!-- <textarea name="description" placeholder="*Fill Description" rows="10" class="form-control"></textarea> -->
             
-            <?php $this->ckeditor->editor('desccription')?>
+            
+            <?php echo $this->ckeditor->editor('desccription')?>
 
         </div>
         <div class="form-group">
