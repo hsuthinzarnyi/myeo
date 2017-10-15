@@ -1,0 +1,127 @@
+.title-class{text-transform: uppercase;text-align: center;color: #fff;}
+.title-class-3{text-transform: capitalize;text-align: center;font-size: 20px;color: #fff;}
+.title-class-2{text-transform: uppercase; text-align: center;font-size: 22px;color: #fff;margin-bottom: 30px;}
+.margin-pad{padding-bottom: 100px;}
+#logo-image{width: 70px;height: 50px;}
+.logo-image{float: left;}
+.float-right{float: right;top: 0;}
+#login-email{background: #000;width: 110px;}
+#login-password{background: #000;width: 110px;}
+#login-button{}
+.top-bar-styling{box-shadow: 1px 1px 1px 1px #000}
+.sign-in-apps{background: rgba(0,0,0,0.2);height:50%;}
+/*.login-with-fb{border: none;font-family: Helvetica, Arial, sans-serif;letter-spacing: .25px;overflow: hidden;text-align: center;text-overflow: clip;white-space: nowrap;}*/
+.sign-in-apps div{margin-left: 40px;height: 40px;margin-bottom: 44px;border-radius: 8px;box-shadow: 0 0 5px 0px #c9c9c9;width: 70%;}/*margin: 0px auto 20px auto;*/
+.sign-in-apps div:hover{box-shadow: 0 0 10px 0px #000;}
+.sign-in-apps div a{color: #fff;margin: 20px 20px;text-decoration: none;padding-top:20px;font-size: 15px;}
+.with-facebook{background: #4261B4;}
+.with-google-plus{background: #e03718;}
+.with-linkedin{background: #004167;}
+.sign-up-with-email{background: rgba(0,0,0,0.2);color: #fff;width: 70%;height:40%;}
+/*.sign-up-with-email div label{margin-top: 10px;}*/
+.sign-up-with-email div input{height: 30px;width: 100%;}/*margin: 0px auto 0px auto;*/
+#google-play-div{background: url(google-play-background.PNG);background-size: 100% 100%;width: 100%;height: 400px;}
+.slideshow-title{}
+.slideshow-title.h3{color: #fff;}
+#sign-but-form{width: 50%;border: 1px solid #fff;border-radius: 8px;}
+.the-height{height: 45px;background: #88e0e3;}
+.col-md-goes-9{width: 12.5%;position: relative;float: left;
+  min-height: 1px;
+  padding-right: auto;
+  padding-left: auto;}
+
+/*css code from w3school*/
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;  
+  position: relative;
+  margin: auto;
+}
+
+.mySlides {
+    display: none;
+
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor:pointer;
+  height: 13px;
+  width: 13px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 30s;
+  animation-name: fade;
+  animation-duration: 30s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+/*end code from w3schools
