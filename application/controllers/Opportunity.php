@@ -24,22 +24,16 @@ class Opportunity extends CI_Controller
 		$data['oppo']  = $this->Opportunity_model->getall();
 		$this->load->view('home/opp_left',$data);
 		$this->load->view('home/opportunity_view',$data);
-		// $this->load->view('include/footer');
 		$this->load->view('include/footer1');
 	}
 	function oppdetail($opp_id)
 	{
-		// var_dump($opp_id);die();
 		$data['oppo']  = $this->Opportunity_model->getall();
-		$data['skill'] = $this->Skill_model->getall();
-		$data1['opp_detail']  = $this->Opportunity_model->oppdetail($opp_id);
-		// var_dump($data['opp_detail']);die();
+		$data1['oppo']  = $this->Opportunity_model->oppdetail($opp_id);
 		$this->load->view('include/header');
 		$this->load->view('include/nav');
-		
 		$this->load->view('home/opp_left',$data);
 		$this->load->view('home/opportunity_view',$data1);
-		// $this->load->view('include/footer');
 		$this->load->view('include/footer1');
 	}
 	function search()
@@ -47,20 +41,21 @@ class Opportunity extends CI_Controller
       $this->form_validation->set_rules('search','Search','required');
       if($this->form_validation->run()==FALSE)
       {
-      	$data['oppo'] = $this->Opportunity_model->search($search);
+		$data1['oppo']  = $this->Opportunity_model->getall();
       	$this->load->view('include/header');
       	$this->load->view('include/nav');
-      	$this->load->view('home/');
+		$this->load->view('home/opp_left',$data1);
+      	$this->load->view('home/opportunity_view',$data1 );
       	$this->load->view('include/footer1'); 
       }
       else
       {
       	$search = $this->input->post('search'); 
-		$data['oppo']  = $this->Opportunity_model->getall();
-      	$data['skill'] = $this->Skill_model->getall();
+		$data1['oppo']  = $this->Opportunity_model->getall();
       	$data['oppo'] = $this->Opportunity_model->search($search);
       	$this->load->view('include/header');
       	$this->load->view('include/nav');
+		$this->load->view('home/opp_left',$data1);
       	$this->load->view('home/opportunity_view',$data);
       	$this->load->view('include/footer1');	
       }

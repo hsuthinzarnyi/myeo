@@ -1,7 +1,6 @@
 <!-- ==========PAGE HEADER============ -->
 
-<!-- <div class="row" style="background-color: #004167;width:100%;position:fixed;">
-   
+<div class="row"  style="background-color: #004167" style="position: fixed">
     <span class="label_tag"> 
         <label class="col-md-3">
             <img src="<?=base_url();?>/images/myeo_logo.png" width="71" height="67" class="col-md-offset-1"/>
@@ -25,14 +24,12 @@
             </ol>
         </div>
    </span>
-</div>  -->
-
-<!-- END OF PAGE HEADER -->
+</div> <!-- END OF PAGE HEADER -->
 
 
 <!-- ===========BODY============ -->
 
-<div class=" container1 col-md-8 col-md-offset-2 " style="padding-top:60px;"> <!-- f0f0f0 eceff1 efebe9 fafafa eeeeee e3f2fd bbdffb e0e0e0 EFEBE9 -->
+<div class="col-md-8 col-md-offset-2 form-group" style="background-color: #eceff1"> <!-- f0f0f0 eceff1 efebe9 fafafa eeeeee e3f2fd bbdffb e0e0e0 EFEBE9 -->
     <?php echo form_open(base_url().'Admin/upload', 'class="form-horizontal" method="post" ')?> 
     <br/>
     <div class="col-md-10 col-md-offset-1">
@@ -47,10 +44,7 @@
         </div>
         <div class="form-group">
             <label>DESCRIPTION:</label></br>
-            <!-- <textarea name="description" placeholder="*Fill Description" rows="10" class="form-control"></textarea> -->
-            
-            <?php $this->ckeditor->editor('desccription')?>
-
+            <textarea name="description" placeholder="*Fill Description" rows="10" class="form-control"></textarea>
         </div>
         <div class="form-group">
             <label class="col-md-5 control-label">CHOOSE TYPE: </label> 
@@ -60,7 +54,7 @@
                 <input type="radio" name="choice" id="skillchoice" onclick="showOne('skill')"> <label>Skill</label>
             </div>
         </div> 
-        <div class="row">       
+        <div class="form-group col-md-12">       
             <ul class="form-group" id="opp">
                 <label class="col-md-5  control-label">CHOOSE ONE SUITABLE OPPORTUNITY:</label>
                 <div class="col-md-5">
@@ -102,7 +96,7 @@
         <div class="col-md-offset-5">   
             <div class="collapse fileinput" id="image">
                 <input type="file" name="imageuploadchoice"  accept="image/*" onchange="showMyImage(this)">
-                <img src="" style="width:60%; margin-top:10px;">
+                <img src="" style="width:60%; margin-top:10px;"></label>
             </div>
         </div>
         <div class="form-group collapse col-md-offset-1 " id="vedio">

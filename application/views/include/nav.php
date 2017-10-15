@@ -1,18 +1,15 @@
 <!-- HSU THINAR NYI -->
 <!-- ===========PAGE HEADER=========== -->
 
-<div class="row" class="pg_header"  style="background-color:#004167" style="position:fixed;" width="100%">
-<span class="label_tag" padding-top="5px">
+<div class="row"   style="background-color:#004167" style="position:fixed;" width="100%">
+<span  padding-top="5px">
     <label class="col-md-3">
         <img src="<?=base_url();?>/images/myeo_logo.png" style="padding-top:11px" width="71"  height="63" class='col-md-offset-2' />
     </label>
-    <!-- <span style="text-align: right"> -->
-    <div class="col-md-offset-4" style="padding:20px;">
+    <div class="nav col-md-offset-4"  >
           <a href="<?=base_url();?>custom" style="text-decoration:none;padding-right:80px;"><font style="color:#fff;font-size:20px">Home</font><a>
-          <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
           <a href="<?=base_url();?>opportunity" style="text-decoration:none;padding-right:80px;"><font style="color:#fff;font-size:20px">Opportunities</font></a>
-          <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
 
          <a href="<?=base_url();?>skill" style="text-decoration:none;"><font style="color:#fff;font-size:20px">Skills</font></a>
     <!-- ==============PROFILE ICON=================== -->
