@@ -2,6 +2,8 @@
 /**
 * 
 */
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 class Opportunity extends CI_Controller
 {
 	
@@ -14,11 +16,12 @@ class Opportunity extends CI_Controller
 		$this->load->model('Opportunity_model');
 		$this->load->model('Skill_model');
 		$this->load->model('Custom_model');
-
+    $this->load->library('encrypt');
 	}
 
 	function index()
 	{
+		// var_dump('hi');die();
 		$this->load->view('include/header');
 		$this->load->view('include/nav');
 		$data['oppo']  = $this->Opportunity_model->getall();

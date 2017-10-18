@@ -9,7 +9,7 @@ class User extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->model('User_model','',TRUE);
+    $this->load->model('User_model');
     $this->load->library('form_validation');
     $this->load->model('Admin_model','',TRUE);
     $this->load->model('Custom_model','',TRUE);
@@ -25,14 +25,13 @@ class User extends CI_Controller
   }
   function index()
   {
-
   }
   function signup()
   {
-      $this->form_validation->set_rules('name','Name','required');
-      $this->form_validation->set_rules('email','Email','required'); 
-      $this->form_validation->set_rules('password','Password','required'); 
-      $this->form_validation->set_rules('cfmpassword','CfmPassword','required'); 
+      $this->form_validation->set_rules('name','Name','trim|required|min_length[3]|max_length[25]|xss_clean|callback_check_name');
+      $this->form_validation->set_rules('email','Email','trim|required|is_unique[user.email]|xss_clean|valid_email'); 
+      $this->form_validation->set_rules('password','Password','trim|required|min_length[8]|max_length[30]|xss_clean'); 
+      $this->form_validation->set_rules('cfpassword','CfmPassword','trim|required|min_length[8]|max_length[30]|xss_clean'); 
       if($this->form_validation->run()==FALSE )
       { 
         $this->load->view('include/header') ;
@@ -44,30 +43,43 @@ class User extends CI_Controller
        $name=$this->input->post('name');
        $email=$this->input->post('email');
        $password=sha1($this->input->post('password'));
-       $cfmpassword=sha1($this->input->post('cfmpassword'));
-      
+       $cfmpassword=sha1($this->input->post('cfpassword'));
+        var_dump($name,$email,$password,$cfmpassword);die();
     if($password==$cfmpassword)
-    {
-       $result=$this->User_model->check($name,$email,$password);
-        // var_dump($result);die();
-       if($result!=NULL)
-       {
-           $this->load->view('user/error');
-        
-       }
-       else
-       {
-         $this->User_model->signup($name,$email,$password);
-         // var_dump($result);die();
-         $this->load->view('user/signup');
-       }
-      
+      {
+           $result=$this->User_model->check($name,$email,$password);
+           var_dump($result);die();
+           if($result==NULL)
+           {
+               $this->load->view('user/error');
+            
+           }
+           else
+           { 
+             $this->User_model->signup($name,$email,$password);
+             $this->load->view('user/signup');// All success
+           }
+          
+      }
+
+    else
+     {
+      var_dump('home');die();
+          $this->load->view('home/signup_view');
+      }
+   }
+  }
+  function check_name($name)
+  {
+    if(preg_match('/^[a-zA-Z_\s]+$/', $name))
+    {     
+      return $name;
     }
     else
     {
-          $this->load->view('home/signup_view');
+      $this->form_validation->set_message('check_name','Only letter and space allowed');
+      return FALSE;
     }
-   }
   }
   function login()
   {
@@ -269,6 +281,6 @@ class User extends CI_Controller
           }
         }
     }
-  // }
+  // } 
 }
 ?>

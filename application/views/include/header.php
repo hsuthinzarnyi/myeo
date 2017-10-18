@@ -6,11 +6,13 @@
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/css/bootstrap.min.css">
 	  <script type="text/javascript" src="<?php echo base_url();?>template/js/jquery.js"></script>
 	  <script type="text/javascript" src="<?php echo base_url();?>template/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>asset/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>asset/ckfinder/ckfinder.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/css/jquery.dataTables.css">
     <script src = "<?php echo base_url();?>jquery.com/jquery-1.10.2.js"></script>
     <script src = "<?php echo base_url();?>jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asset/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>asset/ckfinder/ckfinder.js"></script>
+     <script src="<?php echo base_url();?>template/js/jquery.localScroll.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url();?>template/js/jquery.scrollTo.min.js" type="text/javascript"></script> 
 
 <script>
 	 	$(document).ready(function(){
@@ -121,24 +123,30 @@ $(function(){
       text-decoration: none;
       font-size:20px;
       color:#fff;
-      text-decoration:none;
       margin: 20px;
-    }
-.a:active{color: green;}
+ } 
+
+#whathere a:hover,#otherstuff a:hover{
+      color:  #85EC14;
+}
+
+#whathere a ,#otherstuff a{
+     color: #CCC;}
+
+/*.row .nav a:visited{color: #85EC14;}*/
+
+.row .nav a:active{color: #85EC14;}
 
 .row .nav a:hover{
-  color: green;
+     color: #85EC14;
 }
 /*=============END of ANCHOR LINK STYLE==========*/
 .font{font-style:;}
 
 /*=================FOOTER ====================*/
 
-<<<<<<< Updated upstream
-=======
 .page_footer{position: relative; 
              }
->>>>>>> Stashed changes
 
 .right_title{
   position: fixed;
@@ -151,7 +159,13 @@ $(function(){
               bottom: 0;
 
 }
+.login
+{
+  background: url(images/myeo.jpg);
+  background-size: 100%;
+  background-origin: 0;
 
+}
 .rspace
 {
   text-align: right;
@@ -179,12 +193,81 @@ $(function(){
 {
   /*transition: font-size 3s, color 2s;*/
 }
-.pg_header
-{
-  position:fixed;
-  top:0;
-}
 
+/*.left-side{
+  position: fixed;
+  left: 0px;
+}*/
+
+/*.page_header{
+  width: 100%;
+position: fixed;}*/
+/*.container-1{
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+}
+.container-1 input#search{
+  width: 300px;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  color: #63717f;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.container-1 input#search::-webkit-input-placeholder {
+   color: #65737e;
+}
+ 
+.container-1 input#search:-moz-placeholder {  Firefox 18- 
+   color: #65737e;  
+}
+ 
+.container-1 input#search::-moz-placeholder {   Firefox 19+ 
+   color: #65737e;  
+}
+ 
+.container-1 input#search:-ms-input-placeholder {  
+   color: #65737e;  
+}
+.container-1 .icon{
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 17px;
+  z-index: 1;
+  color: #4f5b66;
+}
+.container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
+    outline:none;
+    background: #ffffff;
+  }
+  .container-1 input#search{
+  width: 300px;
+  height: 50px;
+  background: #2b303b;
+  border: none;
+  font-size: 10pt;
+  float: left;
+  color: #262626;
+  padding-left: 45px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+ 
+   
+    -webkit-transition: background .55s ease;
+  -moz-transition: background .55s ease;
+  -ms-transition: background .55s ease;
+  -o-transition: background .55s ease;
+  transition: background .55s ease;
+}*/
 </style>
 <!--HTZN-->
 <script type="text/javascript">
@@ -207,10 +290,24 @@ function showOne(showme) {
 </script>
 
 <script>
-growing.onclick = function() {
+#home.onclick = function() {
   this.style.fontSize = '36px';
   this.style.color = 'red';
 };
+</script>
+
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    $("#opp").click(function(){
+      // $("#whathere").show();
+      $("#whathere").text("hide");
+      $("#skill").click(function(){
+        $("#").hide();
+        $("#show").text("show");
+      });
+    });
+  });
 </script>
 
 </head>
