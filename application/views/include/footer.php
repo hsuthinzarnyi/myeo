@@ -21,7 +21,7 @@
               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Privacy Policy</font></a></label>
               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Cookie Policy</font></a></label>
+              <!-- <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Cookie Policy</font></a></label> -->
               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
               <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Copyright Policy</font></a></label>
 

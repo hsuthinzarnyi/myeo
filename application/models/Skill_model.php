@@ -39,5 +39,10 @@ class Skill_model extends CI_Model
 		// var_dump($search_res->result());
 		return $search_res->result();
 	}
+
+	function add()
+	{
+		
+	}
 }
 ?>

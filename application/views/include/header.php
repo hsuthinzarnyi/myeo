@@ -159,6 +159,14 @@ $(function(){
               bottom: 0;
 
 }
+
+.pg_header{
+  position: relative;
+  top: 0;
+  /*width: 100%;*/
+}
+
+
 .login
 {
   background: url(images/myeo.jpg);
@@ -189,9 +197,10 @@ $(function(){
     height: 4000px;
 }
 
-#growing 
+.left 
 {
   /*transition: font-size 3s, color 2s;*/
+  /*scroll-behavior: unset;*/
 }
 
 /*.left-side{
@@ -268,6 +277,30 @@ position: fixed;}*/
   -o-transition: background .55s ease;
   transition: background .55s ease;
 }*/
+
+.input-placeholder {
+        position: relative;
+      }
+      .input-placeholder input {
+        padding: 2px;
+      }
+      .input-placeholder input:valid + .placeholder {
+        display: none;
+      }
+      .placeholder {
+        position: absolute;
+        pointer-events: none;
+        top: 2px;
+        bottom: 2px;
+        left: 6px;
+        margin: auto;
+        color: #ccc;
+      }
+      .placeholder span {
+        color: red;
+      }
+
+
 </style>
 <!--HTZN-->
 <script type="text/javascript">
@@ -296,20 +329,35 @@ function showOne(showme) {
 };
 </script>
 
-<script type="text/javascript">
+<script language="JavaScript" type="text/javascript"> 
 
-  $(document).ready(function(){
-    $("#opp").click(function(){
-      // $("#whathere").show();
-      $("#whathere").text("hide");
-      $("#skill").click(function(){
-        $("#").hide();
-        $("#show").text("show");
-      });
-    });
-  });
+   function HandleBrowseClick() { 
+   var fileinput = document.getElementById("browse");
+   fileinput.click();
+  }
+
+   function Handlechange() {
+    var fileinput = document.getElementById("browse");
+    var textinput = document.getElementById("upload");
+    textinput.value = fileinput.value; }
 </script>
 
+
+<script type="text/javascript">
+$('.palceholder').click(function() {
+  $(this).siblings('input').focus();
+});
+$('.form-control').focus(function() {
+  $(this).siblings('.palceholder').hide();
+});
+$('.form-control').blur(function() {
+  var $this = $(this);
+  if ($this.val().length == 0)
+    $(this).siblings('.palceholder').show();
+});
+$('.form-control').blur();
+</script>
+      
 </head>
 <body onload="closeall()" style="background-color:">
 <!--HTZN-->

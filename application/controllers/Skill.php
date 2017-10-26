@@ -17,6 +17,12 @@ class Skill extends CI_Controller
 
 	function index()
 	{
+		// if(isset($_SESSION['logged_in']))
+  //     $log_session=$this->session->has_userdata('logged_in');
+  //   if($log_session)
+ // {
+ //      redirect('');
+ //    }	
 		$this->load->view('include/header');
 		$this->load->view('include/nav');
 		$data['skill']  = $this->Skill_model->getall();
@@ -28,6 +34,10 @@ class Skill extends CI_Controller
 	
 	function skilldetail($skill_id)
 	{
+		// if(isset($_SESSION['logged_in']))
+  //     $log_session=$this->session->has_userdata('logged_in');
+  //   if($log_session)
+   
 		$this->load->view('include/header');
 		$this->load->view('include/nav');
 		$data['skill']  = $this->Skill_model->getall();
@@ -40,6 +50,10 @@ class Skill extends CI_Controller
 	
 	function search1()
 	{
+		// if(isset($_SESSION['logged_in']))
+  //     $log_session=$this->session->has_userdata('logged_in');
+  //   if($log_session)
+   
       $this->form_validation->set_rules('search','Search','required');
       if($this->form_validation->run()==FALSE)
       {

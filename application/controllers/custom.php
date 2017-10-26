@@ -18,6 +18,9 @@ class custom extends CI_Controller
 
 	function index()
 	{
+	
+    // var_dump($this->session->has_userdata('logined_in')) ;
+       { 
 		$this->load->view('include/header');
 		$this->load->view('include/nav');
 		$data['oppo']  = $this->Opportunity_model->getall();
@@ -27,10 +30,17 @@ class custom extends CI_Controller
 		$this->load->view('include/footer');
 		$this->load->view('include/footer1');
 	}
+	}
 
 	function all($opp_id,$skill_id)
 	{
-		// var_dump($opp_id);die();
+		// // var_dump($opp_id);die();
+		// if(isset($_SESSION['logged_in']))
+  //     $log_session=$this->session->has_userdata('logged_in');
+  //   if($log_session)
+  //   {
+  //     redirect('login');
+  //   }
 		$this->load->view('include/header');
 		$this->load->view('include/nav');
 		$data['oppo']  = $this->Opportunity_model->getall();
@@ -44,6 +54,7 @@ class custom extends CI_Controller
 	}
 	function search()
 	{
+		//  
       $this->form_validation->set_rules('search','Search','required');
       if($this->form_validation->run()==FALSE)
       {
