@@ -261,8 +261,8 @@ $(function(){
   background: url(images/myeo-background2.jpg);
   background-size: 100%;
   background-origin: 0;
-  min-height: 700px;
-  /*background-repeat: no-repeat;*/
+  min-height: 200px;
+  background-repeat: no-repeat;
   /*background-position: center center;*/
 }
 .rspace
@@ -386,31 +386,34 @@ body{
 </div>
 </div>
   <!-- Login Div -->
+  <div height="90px;">
   <div  class="background" style="background-color:#06c3c3" id="slideshow-container1">
-    <ul style="padding-top:47px;">
-      <h2 class="title-class" style="font-family:open-sans">Develop your skills and</h2>
-      <h2 class="title-class" style="font-family:open-sans">discover your next opportunity</h2>
-      <h3 class="title-class-3" style="font-family:">Post a new opportunity for free <a href="#" style="text-decoration: underline;color: white;"><font color="white">here</font></a></h3>
+    <ul style="padding-top:70px;">
+      <h1 class="title-class" style="font-family:open-sans"><b>Develop your skills and</b></h1>
+      <h1 class="title-class" style="font-family:open-sans;line-height: 1px"><b>discover your next opportunity</b></h1>
+      <h3 class="title-class-3" style="font-family:;padding-top: 12px"><b>Post a new opportunity for free <a href="#" style="text-decoration: underline;color: white;"><font color="white">here</b></font></a></h3>
     </ul>
     <!-- <div class="row"> -->
-      <div class="row justify-content-around margin-pad ">
+      <div class="row justify-content-around margin-pad" height="350px">
         <!-- <h3 class="title-class">Develop your skills and discover your next opportunity</h3>
         <h5>Post a new opportunity for free <a href="#">here</a></h5> -->
+
         <div class=" container col-md-offset-1 col-md-4 sign-in-apps" >
          <center> <h5 class="title-class-2">Sign In With</h5>
-            
+            <p style="padding-top: 50px">
               <div class="with-facebook">
                 <img src="<?=base_url();?>images/100417_fb.png">
                 <a href="#" style="padding-top:20px;">Sign In With Facebook</a>
               </div>
-              <div class="with-google-plus">
+             <!--  <div class="with-google-plus">
                 <img src="<?=base_url();?>images/100417_gplus.png">
                 <a href="#" style="padding-top:20px;">Sign In With Google Plus</a>
-              </div>                                                       
+              </div>  -->                                                      
               <div class="with-linkedin">
                 <img src="<?=base_url();?>images/100417_linkedin.png">
                 <a href="<?=base_url();?>user_linkedin" style="padding-top:20px;">Sign In With LinkedIn</a>
               </div>
+            </p> 
             </center>
         </div>
         <div class=" container col-md-offset-2 col-md-4 sign-up-with-email"><!-- style="text-align: center;padding-left: 50px;" -->
@@ -418,7 +421,7 @@ body{
           <?php $attribute=array("role"=> "form");
             echo form_open('user/signup',$attribute);?>
               <center><h5 class="title-class-2">Sign Up With Email</h5></center>
-              <div class="form-group">
+              <div class="form-group" style="line-height: 1px">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" style="background-color:transparent" required>
                 
@@ -445,10 +448,10 @@ body{
           <!-- </center> -->
         </div>  
       </div>
-    <!-- </div> -->
-     <div style="background:#A6CAE5;height:40px;"><center><h4 style="padding-top:10px;color:#fff;font-family:open-sans;">FEATURED OPPORTUNITIES</h4></center></div>
+    
+     <div style="background:#A6CAE5;height:40px;"><center><h4 style="padding-top:10px;color:#fff;font-family:open-sans;"><b>FEATURED OPPORTUNITIES</b></h4></center></div>
   </div>
-
+</div>
 
 <div class="slideshow-container">
 
@@ -515,9 +518,9 @@ function showSlides() {
   <!-- </div> -->
 
    <!-- <div id="" style="background-color: white"> -->
-    <center style="height: 500px">   
-      <h4 style="color: blue">OPPORTUNITIES SUPPORTED BY</h4> 
-      <img src="<?=base_url();?>/images/AIA.png" style="width:၅0%;height:400px;" >
+    <center style="height: 350px">   
+      <h2 style="color: #000"><b>PROUDLY SUPPORTED BY</b></h2> 
+      <img src="<?=base_url();?>/images/AIA.png" style="width:18%;height:210px;padding-top: 15px" >
     </center>
    </div>
 
@@ -532,19 +535,19 @@ function showSlides() {
   </label>
    <!-- <span style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
    <span style="text-align: right">
-              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">About</font></a></label>
+              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff;font-weight: lighter;">About</font></a></label>
                 <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Career</font></a></label>
+              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff;font-weight: lighter;">Career</font></a></label>
               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Compus Chapter Program </font></a></label>
+             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff;font-weight: lighter;">Compus Chapter Program </font></a></label>
               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">User Aggrement</font></a></label>
+             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff;font-weight: lighter;">User Aggrement</font></a></label>
               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Privacy Policy</font></a></label>
+             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff;font-weight: lighter;">Privacy Policy</font></a></label>
               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
               <!-- <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Cookie Policy</font></a></label> -->
               <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Copyright Policy</font></a></label>
+              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff;font-weight: lighter;">Copyright Policy</font></a></label>
 
     </span>
 </div> <!-- End Of Page Footer -->

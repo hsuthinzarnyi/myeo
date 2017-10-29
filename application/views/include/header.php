@@ -180,7 +180,7 @@ $(function(){
   background: url(images/myeo.jpg);
   background-size: 100%;
   background-origin: 0;
-
+  max-height: 200px;
 }
 /*.rspace
 {

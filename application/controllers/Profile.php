@@ -12,6 +12,7 @@ class Profile extends CI_Controller
 	  $this->load->helper('security');
     $this->load->helper('form');
 		$this->load->model('Profile_model');
+    $this->load->model('User_model');
 	}
 
 	function index()
@@ -24,6 +25,9 @@ class Profile extends CI_Controller
 
 	function create()
   {
+     $email=$this->session->userdata('email');
+    // var_dump($username,$email);die();
+     $result['data']=$this->User_model->getuser($email);
      $this->form_validation->set_rules('name','Name','required');
      $this->form_validation->set_rules('education','Education','required');
      $this->form_validation->set_rules('location','Location','required');
@@ -54,7 +58,7 @@ class Profile extends CI_Controller
      {
        // echo "Hello world";
         $this->load->view('include/header');
-        $this->load->view('home/profile_page');
+        $this->load->view('home/profile_page',$result);
         $this->load->view('include/footer');
      }
      else
