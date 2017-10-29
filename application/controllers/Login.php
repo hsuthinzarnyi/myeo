@@ -13,7 +13,6 @@ class Login extends CI_Controller
 	function index()
 	{
 		$this->load->helper(array('form'));
-		$this->load->view('home/login_page');
 		// $this->load->view('include/footer');
 	}
 	function out()

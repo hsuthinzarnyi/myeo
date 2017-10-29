@@ -23,20 +23,21 @@ class Opportunity extends CI_Controller
 	{
 	
 
-    $log=$this->session->userdata('logged_in');
-    if($log==NULL)
-    {
+    // $log=$this->session->userdata('logged_in');
+    // if($log==NULL)
+    // {
     $this->load->view('include/header');
-		$this->load->view('include/nav');
+		// $this->load->view('include/nav');
+    $this->load->view('home/opp_search');
 		$data['oppo']  = $this->Opportunity_model->getall();
 		$this->load->view('home/opp_left',$data);
 		$this->load->view('home/opportunity_view',$data);
-		$this->load->view('include/footer1');
-    	}
-    	else
-    	{
-    		redirect('user/login');
-    	}
+		$this->load->view('include/footer');
+    	// }
+    	// else
+    	// {
+    		// redirect('user/login');
+    	// }
     	
 	}
 	function oppdetail($opp_id)
@@ -56,39 +57,60 @@ class Opportunity extends CI_Controller
 		$data['oppo']  = $this->Opportunity_model->getall();
 		$data1['oppo']  = $this->Opportunity_model->oppdetail($opp_id);
 		$this->load->view('include/header');
-		$this->load->view('include/nav');
+		$this->load->view('home/opp_search');
 		$this->load->view('home/opp_left',$data);
 		$this->load->view('home/opportunity_view',$data1);
-		$this->load->view('include/footer1');
+		$this->load->view('include/footer');
 	}
 	function search()
 	{
-		if(isset($_SESSION['logged_in']))
-      $log_session=$this->session->has_userdata('logged_in');
-    if($log_session)
-    {
-      redirect('login');
-    }
-      $this->form_validation->set_rules('search','Search','required');
+		// if(isset($_SESSION['logged_in']))
+  //     $log_session=$this->session->has_userdata('logged_in');
+  //   if($log_session)
+  //   {
+  //     redirect('login');
+  //   }
+      $this->form_validation->set_rules('search','Search','required|xss_clean|required');
       if($this->form_validation->run()==FALSE)
       {
-		$data1['oppo']  = $this->Opportunity_model->getall();
+		    $data1['oppo']  = $this->Opportunity_model->getall();
       	$this->load->view('include/header');
-      	$this->load->view('include/nav');
-		$this->load->view('home/opp_left',$data1);
+      	$this->load->view('home/opp_search');
+		    $this->load->view('home/opp_left',$data1);
       	$this->load->view('home/opportunity_view',$data1 );
-      	$this->load->view('include/footer1'); 
+      	$this->load->view('include/footer'); 
       }
       else
       {
       	$search = $this->input->post('search'); 
-		$data1['oppo']  = $this->Opportunity_model->getall();
-      	$data['oppo'] = $this->Opportunity_model->search($search);
-      	$this->load->view('include/header');
-      	$this->load->view('include/nav');
-		$this->load->view('home/opp_left',$data1);
-      	$this->load->view('home/opportunity_view',$data);
-      	$this->load->view('include/footer1');	
+        if ($search) 
+        {
+             $check = $this->Opportunity_model->check($search);
+             // var_dump($check);die();
+             if ($check==NULL) 
+             {
+                $data2['res'] = "Do not match";
+                $data1['oppo']  = $this->Opportunity_model->getall();
+                $data['oppo'] = $this->Opportunity_model->search($search);
+                $this->load->view('include/header');
+                $this->load->view('home/opp_search');
+                $this->load->view('home/opp_left',$data1);
+                $this->load->view('home/opportunity_view',$data2,$data);
+                // $this->load->view('home/opportunity_view',$data);
+                $this->load->view('include/footer');
+             }
+             else
+             {
+                $data1['oppo']  = $this->Opportunity_model->getall();
+                $data['oppo'] = $this->Opportunity_model->search($search);
+                $this->load->view('include/header');
+                $this->load->view('home/opp_search');
+                $this->load->view('home/opp_left',$data1);
+                $this->load->view('home/opportunity_view',$data);
+                $this->load->view('include/footer');
+             }
+        }
+		   	
       }
   }
 }

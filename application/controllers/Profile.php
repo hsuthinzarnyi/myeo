@@ -52,7 +52,7 @@ class Profile extends CI_Controller
      if($this->form_validation->run() == FALSE)
 
      {
-       echo "Hello world";
+       // echo "Hello world";
         $this->load->view('include/header');
         $this->load->view('home/profile_page');
         $this->load->view('include/footer');
@@ -74,21 +74,21 @@ class Profile extends CI_Controller
       $Competition= $this->input->post('Competition');
 
       $Communation = $this->input->post('1');
-      $Leadership = $this->input->post('2');
-      $Public = $this->input->post('3');
+      $Leadership  = $this->input->post('2');
+      $Public      = $this->input->post('3');
       $Application =  $this->input->post('4');
-      $Interview =  $this->input->post('5');
-      $critical = $this->input->post('6');
-      $Creative = $this->input->post('7');
-      $Digital =  $this->input->post('8');
-      $Cover =  $this->input->post('9');
+      $Interview   =  $this->input->post('5');
+      $critical    = $this->input->post('6');
+      $Creative    = $this->input->post('7');
+      $Digital     =  $this->input->post('8');
+      $Cover       =  $this->input->post('9');
       $Entrepreneurship = $this->input->post('0');
-      var_dump($Communation,$Leadership,$Public,$Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship);die();
+      var_dump($Communation,$Leadership,$Public,$Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship,'hhh');
       $image  = $this->img_upload();
       $cv     = $this->pdf_upload();
       $letter = $this->pdf_upload1();
       $video  = $this->video_upload();
-      var_dump($name, $education, $location, $sentence,$UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition,$Communation, $Leadership, $Public, $Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship);die();
+      var_dump($name, $education, $location, $sentence,$UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition,$Communation, $Leadership, $Public, $Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship,'kkkk',$image,'img',$cv,$letter,'vd',$video);die();
 
       $result = $this->Profile_model->create( $image, $cv, $letter, $video);
       $result2=$this->Profile_model->add($UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition);
@@ -125,6 +125,7 @@ class Profile extends CI_Controller
       if ( ! $this->upload->do_upload('image'))
                 {
                         $error = array('error' => $this->upload->display_errors());
+                        $this->load->view('home/profile_page',$error);
                         return $error;
                 }
                 else

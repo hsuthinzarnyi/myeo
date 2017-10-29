@@ -28,7 +28,6 @@ class custom extends CI_Controller
 		$this->load->view('home/left_view',$data);
 		$this->load->view('home/custom_view',$data);
 		$this->load->view('include/footer');
-		$this->load->view('include/footer1');
 	}
 	}
 
@@ -50,7 +49,7 @@ class custom extends CI_Controller
 		$this->load->view('home/custom_view',$data);
 		var_dump($data['oppo'],$data['skill'],$data['skill_detail'],$data['opp_detail']);die();
 		$this->load->view('include/footer');
-		$this->load->view('include/footer1');
+		// $this->load->view('include/footer1');
 	}
 	function search()
 	{
@@ -58,25 +57,55 @@ class custom extends CI_Controller
       $this->form_validation->set_rules('search','Search','required');
       if($this->form_validation->run()==FALSE)
       {
-      	$data['oppo'] = $this->Opportunity_model->search($search);
-      	$data['skill']=$this->Skill_model->search($search);
-      	$this->load->view('include/header');
-      	$this->load->view('include/nav');
-      	$this->load->view('home/');
-      	$this->load->view('include/footer1'); 
-      }
-      else
-      {
-      	$search = $this->input->post('search'); 
+
 		$data1['oppo']  = $this->Opportunity_model->getall();
 		$data1['skill'] = $this->Skill_model->getall();      	
-      	$data['oppo'] = $this->Opportunity_model->search($search);
-      	$data['skill']=$this->Skill_model->search($search);
+      	// $data['oppo']   = $this->Opportunity_model->search($search);
+      	// $data['skill']  = $this->Skill_model->search($search);
       	$this->load->view('include/header');
       	$this->load->view('include/nav');
       	$this->load->view('home/left_view',$data1);
-      	$this->load->view('home/custom_view',$data);
-      	$this->load->view('include/footer1');	
+      	$this->load->view('home/custom_view',$data1);
+      	$this->load->view('include/footer'); 
+      }
+      else
+      {
+      		$search = $this->input->post('search'); 
+        if ($search) 
+        {
+             $check = $this->Skill_model->check($search);
+             $check1 = $this->Opportunity_model->check($search);
+             // var_dump($check);die();
+             if ($check==NULL&& $check1==NULL) 
+             {
+                $data2['res'] = "Do not match";
+				$data1['oppo']  = $this->Opportunity_model->getall();
+                $data1['skill']  = $this->Skill_model->getall();
+				$data['oppo']   = $this->Opportunity_model->search($search);
+		      	$data['skill']  = $this->Skill_model->search($search);	
+		      	$this->load->view('include/header');
+		      	$this->load->view('include/nav');
+				$this->load->view('home/left_view',$data1);
+                // $this->load->view('home/opportunity_view',$data2,$data);
+		      	$this->load->view('home/custom_view',$data2,$data);
+                $this->load->view('include/footer');
+             }
+             else
+             {
+               	$search         = $this->input->post('search'); 
+				$data1['oppo']  = $this->Opportunity_model->getall();
+				$data1['skill'] = $this->Skill_model->getall();      	
+		      	$data['oppo']   = $this->Opportunity_model->search($search);
+		      	$data['skill']  = $this->Skill_model->search($search);
+		      	$this->load->view('include/header');
+		      	$this->load->view('include/nav');
+		      	$this->load->view('home/left_view',$data1);
+		      	$this->load->view('home/custom_view',$data);
+		      	$this->load->view('include/footer');	
+             }
+        }
+
+      
       }
   }
 }

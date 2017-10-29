@@ -1,11 +1,10 @@
 <!-- ================HTZN=================== -->
-
-  <div class="left" style="padding-top: 75px;">
+  <div class="left" style="padding-top:px;">
     <?php echo form_open('custom/all'); ?> 
 
       <div class="left-side  col-md-2" style="background-color:#FFF;padding-top:40px;height:800%">
          <div style="padding:30px;" class="dd">
-            <label>Home</label><br>
+            <a href="<?=base_url();?>custom" style="text-decoration:none"><font color="#000">Home</font></a><br>
            <!-- ==================Oppopritunities Drowdown======================= -->
         
         <h5 onclick="showOne('whathere')"  data-toggle="collapse" data-target="#opp"><font style="color:#CCC">Opportinities<b class="caret"></b></font></h5>

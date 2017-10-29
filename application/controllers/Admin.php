@@ -33,6 +33,13 @@
 ///////////////////myatmonmonkyi/////////////////////
 		function upload()
 		{
+			 $log=$this->session->userdata('logged_in');
+			if(!isset($log))
+			{
+				$this->load->view('home/login');
+             }
+             else{    
+			
 			$data['all_opp']=$this->Admin_model->opportunity();
 			$data['all_skill']=$this->Admin_model->skill();
 			$this->form_validation->set_rules('title','Title', 'trim|required');
@@ -150,6 +157,8 @@
 					}
 				}//////END_OF_FIRST_RADIO_CHOICE
 			} /////END_OF_FIRST_IF
+		 }//session
+		 
 		}//////END_OF_upload_FUNCTION
 
 		function get_oppdetail(){

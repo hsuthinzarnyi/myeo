@@ -40,9 +40,13 @@ class Skill_model extends CI_Model
 		return $search_res->result();
 	}
 
-	function add()
-	{
-		
-	}
+	function check($search)
+  	{
+	  	$this->db->select('*');
+	  	$this->db->from('skill_detail');
+	  	$this->db->like('skill_title',$search);
+	  	$data=$this->db->get();
+	  	return $data->result();
+ 	 }
 }
 ?>

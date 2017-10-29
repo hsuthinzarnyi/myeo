@@ -35,5 +35,13 @@ class Opportunity_model extends CI_Model
 		$search_res = $this->db->get();
 		return $search_res->result();
 	}
+	function check($search)
+  	{
+	  	$this->db->select('*');
+	  	$this->db->from('opp_detail');
+	  	$this->db->like('opp_title',$search);
+	  	$data=$this->db->get();
+	  	return $data->result();
+ 	 }
 }
 ?>

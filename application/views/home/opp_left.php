@@ -10,7 +10,7 @@
              
                   <?php foreach ($oppo as $row) { ?>
 
-            <a href="<?php echo base_url();?>opportunity/oppdetail/<?=$row->opp_id?>" style="text-decoration:none;"><font color="#CCC" class="link"><?= $row->type ?></font>
+            <a href="<?php echo base_url();?>opportunity/oppdetail/<?=$row->opp_id?>" style="text-decoration:none;" ><font color="#CCC" class="link"><?= $row->type ?></font>
             </a><br/>
           
                    <?php } ?>

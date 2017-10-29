@@ -288,7 +288,7 @@ $(function(){
   color: #fff;
   font-size: 16px;
 }
-.container button[type="submit"]
+.container a[class="btn btn-default"]
 {
   border: 1px solid #fff;
   outline:none; 
@@ -296,20 +296,20 @@ $(function(){
   height: 40px;
   color:#fff;
   font-size: 16px;
-  background: transparent;
+  background: #004167;
   cursor: pointer;
   border-radius: 10px;
 }
-.container button[type="submit"]:hover
+/*.container button[type="submit"]:hover
 {
   background: #004167;
   color: #fff;
-}
+}*/
 .sign-up-with-email a 
 {
   text-align: right;
 }
-.form-group button[typr="submit"]
+.form-group button[type="submit"]
 {
   border: 2px solid #fff;
   outline:none;
@@ -344,11 +344,11 @@ body{
         <div class="form-group" style="padding-top:20px;">
         
         <input type="email"  class="form-control " name="email" placeholder="Email">
-        <?php echo form_error('email',"<div class='error' 
+         <?php echo form_error('email',"<div class='error' 
           style='color:red'>","</div>");?>
         <input type="password" class="form-control " name="password" placeholder="Password">
-        <?php echo form_error('password',"<div class='error' 
-          style='color:red'>","</div>");?>
+        <!-- <?php echo form_error('password',"<div class='error' 
+          style='color:red'>","</div>");?> -->
         <button type="submit" class="btn btn " value="LOG IN" 
                style="color:white;background-color:transparent;border-color:white;height:30px;">LOG IN</button>
        <a href="<?= base_url();?>#slideshow-container1" class="btn btn " id="navigations" 
@@ -363,7 +363,7 @@ body{
 </div>
 </div>
   <!-- Login Div -->
-  <div  class="background" style="background-color:#06c3c3" id="slideshow-container1">
+  <div  class="background"  id="slideshow-container1">
     <ul style="padding-top:47px;">
       <h2 class="title-class" style="font-family:open-sans">Develop your skills and</h2>
       <h2 class="title-class" style="font-family:open-sans">discover your next opportunity</h2>
@@ -391,25 +391,26 @@ body{
 
         <div class=" container col-md-offset-2 col-md-4 sign-up-with-email"><!-- style="text-align: center;padding-left: 50px;" -->
           <!-- <center> -->
-          <form role="form">
+          <?php $attribute=array("role"=>"form");
+                  echo form_open('user',$attribute);?>
               <center><h5 class="title-class-2">Sign Up With Email</h5></center>
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" style="background-color:transparent" >
+                <input type="text" class="form-control" name="name" style="background-color:transparent" required>
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" name="email" style="background-color:transparent">
+                <input type="email" class="form-control" name="email" style="background-color:transparent" required>
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" name="password" style="background-color:transparent">
+                <input type="password" class="form-control" name="password" style="background-color:transparent" required>
               </div>
               <div class="form-group">
                 <label for="password">Confirm Password</label>
-                <input type="password" class="form-control" name="cfmassword" style="background-color:transparent">
+                <input type="password" class="form-control" name="cfmpassword" style="background-color:transparent" required>
               </div>
-              <center><button type="submit" class="btn btn-default" style="padding-bottom:10px;">SIGN UP</button></center><br/>
+              <a href="<?php echo base_url();?>user/signup"  class="btn btn-default" style="padding-bottom:10px;"><center>SIGN UP</center></a><br/>
               <a href="#" class="signup" style="padding-bottom:20px; text-decoration: none;color: #fff;margin-bottom: 20px;">Forgot password?</a>
               
           </form>
@@ -420,8 +421,11 @@ body{
 
    
 </div>
+</div>
+<div style="background-color: #A6CAE5;">
+  <h4><center  >FEATURED OPPORTUNITIES</center></h4>
+</div>
 
-</div> 
 
 
 <div class="slideshow-container">
@@ -509,11 +513,11 @@ function showSlides() {
 
               <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Career</font></a></label>
 
-             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Compus Chapter Program </font></a></label>
+              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Compus Chapter Program </font></a></label>
 
-             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">User Aggrement</font></a></label>
+              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">User Aggrement</font></a></label>
 
-             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Privacy Policy</font></a></label>
+              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Privacy Policy</font></a></label>
 
               <!-- <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Cookie Policy</font></a></label> -->
 

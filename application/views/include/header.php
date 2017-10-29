@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>asset/ckfinder/ckfinder.js"></script>
      <script src="<?php echo base_url();?>template/js/jquery.localScroll.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>template/js/jquery.scrollTo.min.js" type="text/javascript"></script> 
-
+<script src="<?php echo base_url();?>script.js"></script>
 <script>
 	 	$(document).ready(function(){
 	 		$('#example').dataTables();
@@ -123,7 +124,7 @@ $(function(){
       text-decoration: none;
       font-size:20px;
       color:#fff;
-      margin: 20px;
+      /*margin: 20px;*/
  } 
 
 #whathere a:hover,#otherstuff a:hover{
@@ -140,6 +141,13 @@ $(function(){
 .row .nav a:hover{
      color: #85EC14;
 }
+.row1 .left a
+{
+  /*height: 800px;*/
+  /*width: 20%;*/
+  /*float: left;*/
+}
+.link:hover{color: #85EC14;}
 /*=============END of ANCHOR LINK STYLE==========*/
 .font{font-style:;}
 
@@ -151,9 +159,9 @@ $(function(){
 .right_title{
   position: fixed;
 }
-.a 
+.a
 {
-  padding-right: 53px;
+  padding-right: 65px;
 }
 .page_footer{position:fixed;
               bottom: 0;
@@ -174,20 +182,15 @@ $(function(){
   background-origin: 0;
 
 }
-.rspace
+/*.rspace
 {
   text-align: right;
-}
+}*/
 .form-inline
 {
   padding-right: 20px;
 }
-.row1 .left
-{
-  /*height: 800px;*/
-  /*width: 20%;*/
-  /*float: left;*/
-}
+
 
 .row1 .right
 {

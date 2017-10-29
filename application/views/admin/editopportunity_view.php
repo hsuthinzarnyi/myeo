@@ -10,17 +10,16 @@
             <a href="<?=base_url();?>Admin/get_oppdetail"><font style="color:#fff">Opportunity</font></a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="<?=base_url();?>Admin/get_skilldetail"><font style="color:#fff">Skills</font></a> 
 
-            <ol class="dropdown pull-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"> <b class="caret"> </b></span></a>
-                <ul class="dropdown-menu" style="background-color:#CCC">
-                    <div class="col-md-4">
-                        <img src="<?=base_url();?>logo.png">
-                    </div>
-                    <div class="col-md-offset-1">
-                        <label>Hsu Thinzar Nyi</label>
-                        <a href="<?=base_url();?>profile/" class="btn" style="background-color: #004167"> <font color="#fff">Edit Your Profile </font></a>
-                    </div>
-                </ul>
+            <ol class="dropdown pull-right"> 
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png"></span><b class="caret"></b></a>
+            <ol class="dropdown-menu" style="background-color:#CCC">
+                <!-- <div class="col-md-4"><img src="<?=base_url();?>pp.PNG"></div> -->
+                <div style="background-color: #CCC">
+                  <label>HSu Thinzar Nyi</label>
+                  <a href="<?=base_url();?>profile/create"><h5 style="color: black">Edit Profile</h5></a>
+                  <a href="<?=base_url();?>logout/logout"><h5 style="color: black">Log Out</h5></a>
+                </div>
+            </ol>
             </ol>
         </div>
    </span>
