@@ -10,17 +10,16 @@
             <a href="<?=base_url();?>Admin/get_oppdetail"><font style="color:#fff">Opportunity</font></a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="<?=base_url();?>Admin/get_skilldetail"><font style="color:#fff">Skills</font></a> 
 
-            <ol class="dropdown pull-right"> 
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png"></span><b class="caret"></b></a>
+              <ol class="dropdown pull-right" style="margin-right: 25px"> 
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png" width="35px"></span><b class="caret"></b></a>
             <ol class="dropdown-menu" style="background-color:#CCC">
-                <!-- <div class="col-md-4"><img src="<?=base_url();?>pp.PNG"></div> -->
                 <div style="background-color: #CCC">
-                  <label>HSu Thinzar Nyi</label>
+                  <label><?php echo $data->name;?></label>
                   <a href="<?=base_url();?>profile/create"><h5 style="color: black">Edit Profile</h5></a>
                   <a href="<?=base_url();?>logout/logout"><h5 style="color: black">Log Out</h5></a>
                 </div>
             </ol>
-            </ol>
+            </ol> 
         </div>
    </span>
 </div> <!-- END OF PAGE HEADER -->
@@ -39,7 +38,10 @@
             $choiceid=$edit->opp_id;
         }
     ?>
-    <?php echo form_open(base_url().'Admin/upload', 'class="form-horizontal" method="post" ')?> 
+    <?php 
+        $oppid = $this->uri->segment(3);
+    ?> 
+    <?php echo form_open(base_url().'admin/edit_opportunity/'.$oppid, 'class="form-horizontal" method="post" ')?> 
     <br/>
     <div class="col-md-10 col-md-offset-1">
         
@@ -53,7 +55,8 @@
         </div>
         <div class="form-group">
             <label>DESCRIPTION:</label></br>
-            <textarea name="description" rows="10" class="form-control" ><?=$description;?></textarea>
+            <!-- <textarea name="description" rows="10" class="form-control" ><?=$description;?></textarea> -->
+            <?php echo $this->ckeditor->editor('description',"$description")?>
         </div>
 
         <div class="form-group">
@@ -92,39 +95,42 @@
                 </select>
             </div>
         </div>
-
         <div class="form-group">
             <label class="col-md-5 control-label"> CHOOSE TO UPLOAD PICTURE or VEDIO</label>
             <div class="col-md-5">
                 <?php
                     if($image){
-                        echo "<input type='radio' name='uploadchoice' value=1 checked> <label>Image</label>
-                            <input type='radio' name='uploadchoice' value=2 > <label>Vedio</label>";
+                        echo "<input type='radio' name='uploadchoice' value=1 id='imagechoice' checked> <label>Image</label>
+                            <input type='radio' name='uploadchoice' value=2 id='videochoice'> <label>Video</label>";
                     }elseif($vdlink){
-                        echo "<input type='radio' name='uploadchoice' value=1 > <label>Image</label>
-                            <input type='radio' name='uploadchoice' value=2 checked> <label>Vedio</label>";
-                    }else{
-                        echo "<input type='radio' name='uploadchoice' value=1 > <label>Image</label>
-                        <input type='radio' name='uploadchoice' value=2> <label>Vedio</label>";
-                    }
+                        echo "<input type='radio' name='uploadchoice' value=1 id='imagechoice'> <label>Image</label>
+                            <input type='radio' name='uploadchoice' value=2 id='videochoice' checked> <label>Video</label>";
+                    }// }else{
+                    //     echo "<input type='radio' name='uploadchoice' value=1 > <label>Image</label>
+                    //     <input type='radio' name='uploadchoice' value=2> <label>Video</label>";
+                    // }
                 ?> 
             </div>
         </div>
-
-        <div class="col-md-offset-5">   
-            <div class="collapse fileinput" id="image">
-                <input type="file" name="imageuploadchoice"  accept="image/*" onchange="showMyImage(this)" value="<?=$image?>">
-                <img src="" style="width:60%; margin-top:10px;"></label>
-            </div>
+         <div class="form-group" id="image" > <!-- style="display:none" -->
+            <!-- <ul class="form-group" id="image"> -->
+                <div class="col-md-offset-5">   
+                    <div class=" fileinput">
+                        <input type="file" name="imageuploadchoice"  accept="image/*" onchange="showMyImage(this)" value="<?=$image?>">
+                        <img src="" style="width:60%; margin-top:10px;"></label>
+                        <input type="hidden" name="imageuploadchoice1" value="<?=$image;?>">
+                    </div>
+                </div>
+           <!--  </ul> -->
         </div>
-        
-        <div class="form-group col-md-offset-1 " id="vedio">
-            <label class="col-md-5 control-label">Fill Vedio Link : </label>
-            <div class="col-md-5">
-                <input type="text" name="vediouploadchoice" value="<?=$vdlink;?>" class="form-control">
-            </div>
+        <div class="form-group" id="video" > <!-- style="display:none" -->
+            <!-- <ul class="form-group" id="video"> -->
+                <label class="col-md-5 control-label">Fill Video Link : </label>
+                <div class="col-md-5">
+                    <input type="text" name="videouploadchoice" value="<?=$vdlink;?>" class="form-control">
+                </div>
+            <!-- </ul> -->
         </div>
-
         <div data-large class="col-md-offset-11">
         <input type="submit" value="Save" class="form-group" >
         <br/> 

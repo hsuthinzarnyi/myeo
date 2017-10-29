@@ -33,13 +33,6 @@
 ///////////////////myatmonmonkyi/////////////////////
 		function upload()
 		{
-			 $log=$this->session->userdata('logged_in');
-			if(!isset($log))
-			{
-				$this->load->view('home/login');
-             }
-             else{    
-			
 			$data['all_opp']=$this->Admin_model->opportunity();
 			$data['all_skill']=$this->Admin_model->skill();
 			$this->form_validation->set_rules('title','Title', 'trim|required');
@@ -157,8 +150,6 @@
 					}
 				}//////END_OF_FIRST_RADIO_CHOICE
 			} /////END_OF_FIRST_IF
-		 }//session
-		 
 		}//////END_OF_upload_FUNCTION
 
 		function get_oppdetail(){
@@ -168,13 +159,69 @@
 			$this->load->view('include/footer');
 		}
 		function edit_opportunity($oppdetail_id){
-			$data['edit']=$this->Admin_model->oppdetail_get($oppdetail_id);
-			// var_dump($data); die();
-			$data['all_opp']=$this->Admin_model->opportunity();
-			$data['all_skill']=$this->Admin_model->skill();
-			$this->load->view('include/header');
-			$this->load->view('admin/editopportunity_view',$data);
-			$this->load->view('include/footer');
+			$this->form_validation->set_rules('title','Title', 'trim|required');
+			$this->form_validation->set_rules('subtitle','Subtitle','trim|required');
+			$this->form_validation->set_rules('description','Description','trim|required');
+			$this->form_validation->set_rules('choice','Choice','required');
+			//$this->form_validation->set_rules('opportunitychoice','OpportunityChoice','required'); 
+			//need or not for select
+			$this->form_validation->set_rules('uploadchoice','UploadChoice','required');  
+			//need or not for two upload choice
+
+			if($this->form_validation->run()==FALSE){  
+				$data['edit']=$this->Admin_model->oppdetail_get($oppdetail_id);
+				// var_dump($data); die();
+				$data['all_opp']=$this->Admin_model->opportunity();
+				$data['all_skill']=$this->Admin_model->skill();
+				$this->load->view('include/header');
+				$this->load->view('admin/editopportunity_view',$data);
+				$this->load->view('include/footer');
+			}else{ //no filled condition for opportunity choice and two upload choice 
+				$uploadchoiceid=$this->input->post("uploadchoice");
+				if($uploadchoiceid=="1"){
+					$opp_id=$this->input->post("opportunitychoice");
+					$opp_image=$this->input->post("imageuploadchoice");
+					$opp_image1=$this->input->post("imageuploadchoice1");
+					$opp_description=$this->input->post("description");
+                    $opp_title=$this->input->post("title");
+                    $opp_subtitle=$this->input->post("subtitle");
+					
+					if($opp_image==NULL)
+					{
+						$opp_img=$opp_image1;
+					  // var_dump($opp_id,$opp_image,$opp_image1,$opp_description,$opp_title,$opp_subtitle);die();
+					}
+					else
+					{
+						$opp_img=$opp_image;
+					}
+					// var_dump($opp_img);die();
+					$data=array("opp_id"=>$opp_id,
+								"opp_image"=>$opp_img,
+								"opp_description"=>$opp_description,
+								"opp_title"=>$opp_title,
+								"opp_subtitle"=>$opp_subtitle);
+					$result=$this->Admin_model->opportunity_edit($data,$oppdetail_id);
+					if($result){
+						echo "Successful Editing Opportunity";
+					}else{
+						echo "Fail Editing Opportunity";
+					}
+				}elseif($uploadchoiceid=="2"){
+					$data=array("opp_id"=>$this->input->post("opportunitychoice"),
+								//"opp_image"=>$this->input->post("null"),
+								"opp_vdlink"=>$this->input->post("videouploadchoice"),
+								"opp_description"=>$this->input->post("description"),
+								"opp_title"=>$this->input->post("title"),
+								"opp_subtitle"=>$this->input->post("subtitle"));
+					$result=$this->Admin_model->opportunity_edit($data,$oppdetail_id);
+					if($result){
+						echo "Successful Editing Opportunity";
+					}else{
+						echo "Fail Editing Opportunity";
+					}
+				}
+			}
 		}
 		function delete_opportunity($oppdetail_id){
 
@@ -185,7 +232,8 @@
 			$this->load->view('admin/getskill_view',$data);
 			$this->load->view('include/footer');
 		}
-		function edit_skill($sdetail_id){
+		function edit_skill($sdetail_id)
+		{
 			$data['edit']=$this->Admin_model->skilldetail_get($sdetail_id);
 			// var_dump($data); die();
 			$data['all_opp']=$this->Admin_model->opportunity();
@@ -194,5 +242,26 @@
 			$this->load->view('admin/editskill_view',$data);
 			$this->load->view('include/footer');
 		}
-	}
+		// function edit_opportunity($oppdetail_id)
+		// {
+		// 	$data['edit']=$this->Admin_model->oppdetail_get($oppdetail_id);
+		// 	// var_dump($data); die();
+		// 	$data['all_opp']=$this->Admin_model->opportunity();
+		// 	$data['all_skill']=$this->Admin_model->skill();
+		// 	$this->load->view('include/header');
+		// 	$this->load->view('admin/editopportunity_view',$data);
+		// 	$this->load->view('include/footer');
+		// }
+  //      function edit_skill($sdetail_id)
+  //      {
+		// 	$data['edit']=$this->Admin_model->skilldetail_get($sdetail_id);
+		// 	// var_dump($data); die();
+		// 	$data['all_opp']=$this->Admin_model->opportunity();
+		// 	$data['all_skill']=$this->Admin_model->skill();
+		// 	$this->load->view('include/header');
+		// 	$this->load->view('admin/editskill_view',$data);
+		// 	$this->load->view('include/footer');
+		// }
+// --------------------------
+	 }
 ?>

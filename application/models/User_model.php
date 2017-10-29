@@ -4,8 +4,8 @@
 */
 class User_model extends CI_Model
 {
-	
-	function __construct()
+  
+  function __construct()
   {
     parent:: __construct();
     $this->load->database();
@@ -13,21 +13,21 @@ class User_model extends CI_Model
   function check($name,$email,$password)
   {
     // var_dump($name,$email,$password);
-  	$this->db->select('*');
-  	$this->db->from('user');
-  	$this->db->where('name',$name);
-  	$this->db->where('email',$email);
-  	$this->db->where('password',$password);
-  	$data=$this->db->get();
-  	// var_dump($data->result());die();
+    $this->db->select('*');
+    $this->db->from('user');
+    $this->db->where('name',$name);
+    $this->db->where('email',$email);
+    $this->db->where('password',$password);
+    $data=$this->db->get();
+    // var_dump($data->result());die();
 
-  	return $data->result();
+    return $data->result();
 
   }
   function signup($name,$email,$password )
   {
-  	$this->db->insert('user',array('name'=>$name,'email'=>$email,'password'=>$password));
-  	
+    $this->db->insert('user',array('name'=>$name,'email'=>$email,'password'=>$password));
+    
   }
     function login($email,$password)
   {
@@ -46,6 +46,14 @@ class User_model extends CI_Model
       // return false;
     // }
     return $data->row_array();
+  }
+  function getuser($email)
+  {
+    $this->db->select('*');
+    $this->db->from('user');
+    $this->db->where('email',$email);
+    $data=$this->db->get();
+    return $data->row();
   }
  
 }

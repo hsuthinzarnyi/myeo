@@ -288,7 +288,7 @@ $(function(){
   color: #fff;
   font-size: 16px;
 }
-.container a[class="btn btn-default"]
+.container button[type="submit"]
 {
   border: 1px solid #fff;
   outline:none; 
@@ -300,6 +300,30 @@ $(function(){
   cursor: pointer;
   border-radius: 10px;
 }
+.container button[type="submit"]:active
+{
+  /*background: #004167;*/
+  color: #fff;
+  text-decoration: none;
+  text-indent: none;
+  border: hidden;
+
+}
+  button::-moz-focus-inner{border:0;}
+.sign-up-with-email a 
+{
+  text-align: right;
+}
+.form-group button[typr="submit"]
+{
+  border: 2px solid #fff;
+  outline:none;
+  font-size: 16px;
+  color:#fff;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 10px;
+}s
 /*.container button[type="submit"]:hover
 {
   background: #004167;
@@ -339,20 +363,19 @@ body{
     </label>
 
     <span class="rspace col-md-offset-4 col-md-5">
+    
     <?php $attribute=array("class"=> "form-inline");
-      echo form_open('user/login',$attribute);?>
+            echo form_open('user/login',$attribute);?>
+
         <div class="form-group" style="padding-top:20px;">
         
-        <input type="email"  class="form-control " name="email" placeholder="Email">
-         <?php echo form_error('email',"<div class='error' 
-          style='color:red'>","</div>");?>
-        <input type="password" class="form-control " name="password" placeholder="Password">
-        <!-- <?php echo form_error('password',"<div class='error' 
-          style='color:red'>","</div>");?> -->
-        <button type="submit" class="btn btn " value="LOG IN" 
-               style="color:white;background-color:transparent;border-color:white;height:30px;">LOG IN</button>
-       <a href="<?= base_url();?>#slideshow-container1" class="btn btn " id="navigations" 
-               style="color:white;background-color:transparent;border-color:white;height:30px;">SIGN UP</a>
+        <input type="email"  class="form-control " name="email" placeholder="Email" required>
+        
+        <input type="text" class="form-control " name="password" placeholder="Password" required>
+        
+        <input type="submit" class="btn btn " name="submit" value="LOG IN" 
+               style="color:white;background-color:transparent;border-color:white;height:30px;border-radius:10px;">
+        <a href="<?= base_url();?>#slideshow-container1" class="btn btn" id="navigations" style="color:white;background-color:transparent;border-color:white;height:30px;border-radius:10px;">SIGN UP</a>
        </div>
        
        </form>
@@ -363,69 +386,68 @@ body{
 </div>
 </div>
   <!-- Login Div -->
-  <div  class="background"  id="slideshow-container1">
+  <div  class="background" style="background-color:#06c3c3" id="slideshow-container1">
     <ul style="padding-top:47px;">
       <h2 class="title-class" style="font-family:open-sans">Develop your skills and</h2>
       <h2 class="title-class" style="font-family:open-sans">discover your next opportunity</h2>
       <h3 class="title-class-3" style="font-family:">Post a new opportunity for free <a href="#" style="text-decoration: underline;color: white;"><font color="white">here</font></a></h3>
     </ul>
     <!-- <div class="row"> -->
-      <div class="justify-content-around margin-pad ">
+      <div class="row justify-content-around margin-pad ">
+        <!-- <h3 class="title-class">Develop your skills and discover your next opportunity</h3>
+        <h5>Post a new opportunity for free <a href="#">here</a></h5> -->
         <div class=" container col-md-offset-1 col-md-4 sign-in-apps" >
          <center> <h5 class="title-class-2">Sign In With</h5>
             
               <div class="with-facebook">
-                <img src="<?=base_url();?>/images/100417_fb.png">
+                <img src="<?=base_url();?>images/100417_fb.png">
                 <a href="#" style="padding-top:20px;">Sign In With Facebook</a>
               </div>
               <div class="with-google-plus">
-                <img src="<?=base_url();?>/images/100417_gplus.png">
-                <a href="#" style="padding-top:20px;">Sign In With Google</a>
+                <img src="<?=base_url();?>images/100417_gplus.png">
+                <a href="#" style="padding-top:20px;">Sign In With Google Plus</a>
               </div>                                                       
               <div class="with-linkedin">
-                <img src="<?=base_url();?>/images/100417_linkedin.png">
-                <a href="#" style="padding-top:20px;">Sign In With LinkedIn</a>
+                <img src="<?=base_url();?>images/100417_linkedin.png">
+                <a href="<?=base_url();?>user_linkedin" style="padding-top:20px;">Sign In With LinkedIn</a>
               </div>
             </center>
         </div>
-
         <div class=" container col-md-offset-2 col-md-4 sign-up-with-email"><!-- style="text-align: center;padding-left: 50px;" -->
           <!-- <center> -->
-          <?php $attribute=array("role"=>"form");
-                  echo form_open('user',$attribute);?>
+          <?php $attribute=array("role"=> "form");
+            echo form_open('user/signup',$attribute);?>
               <center><h5 class="title-class-2">Sign Up With Email</h5></center>
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" style="background-color:transparent" required>
+                
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" name="email" style="background-color:transparent" required>
+                
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" class="form-control" name="password" style="background-color:transparent" required>
+                
               </div>
               <div class="form-group">
                 <label for="password">Confirm Password</label>
                 <input type="password" class="form-control" name="cfmpassword" style="background-color:transparent" required>
+                
               </div>
-              <a href="<?php echo base_url();?>user/signup"  class="btn btn-default" style="padding-bottom:10px;"><center>SIGN UP</center></a><br/>
-              <a href="#" class="signup" style="padding-bottom:20px; text-decoration: none;color: #fff;margin-bottom: 20px;">Forgot password?</a>
+              <center><button type="submit" class="btn btn-default" style="padding-bottom:10px;">SIGN UP</button></center><br/>
+              <div align="right"><a href="#" class="signup" style="padding-bottom:20px; text-decoration: none;color: #fff;margin-bottom: 20px;">Forgot password?</a></div>
               
           </form>
           <!-- </center> -->
         </div>  
-
+      </div>
+    <!-- </div> -->
+     <div style="background:#A6CAE5;height:40px;"><center><h4 style="padding-top:10px;color:#fff;font-family:open-sans;">FEATURED OPPORTUNITIES</h4></center></div>
   </div>
-
-   
-</div>
-</div>
-<div style="background-color: #A6CAE5;">
-  <h4><center  >FEATURED OPPORTUNITIES</center></h4>
-</div>
-
 
 
 <div class="slideshow-container">
@@ -465,7 +487,7 @@ body{
 
 </div>
 
-<div style="text-align:center;background-color:#b3bbcf;">
+<div style="text-align:center;background-color:#A6CAE5;">
   <span class="dot" onclick="currentSlide(1)"></span>
   <span class="dot" onclick="currentSlide(2)"></span>
   <span class="dot" onclick="currentSlide(3)"></span>
@@ -499,33 +521,80 @@ function showSlides() {
     </center>
    </div>
 
-<!-- FOOTER -->
-<div class="page_footer" style="height:40px;width:;background-color:#004167">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<!-- ===========PAGE FOOTER=========== -->
+<div class="page_footer col-md-12" id="pg_footer" style="background-color:#004167;height:40px;padding-left:70px">
 
-
-  <label class="a"><img src="<?=base_url();?>/images/myeo_logo.png"  width="30px;" height="40px;" /></label>
   <label class="a">
-  <a href="" style="text-decoration:none;"><font style="color:#fff"><span style="text-align: right"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#fff">&copy; 2017</font></span></font></a>
+  <img src="<?=base_url();?>/images/myeo_logo.png"  width="30px;" height="35px;" />
   </label>
-   <span>
+  <label class="a">
+  <a href="" style="text-decoration:none;"><font style="color:#fff"><span style="text-align: right"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#fff"><span class="glyphicon glyphicon-copyright-mark"></span>2017</font></span></font></a>
+  </label>
+   <!-- <span style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+   <span style="text-align: right">
               <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">About</font></a></label>
-
+                <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
               <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Career</font></a></label>
-
-              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Compus Chapter Program </font></a></label>
-
-              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">User Aggrement</font></a></label>
-
-              <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Privacy Policy</font></a></label>
-
+              <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Compus Chapter Program </font></a></label>
+              <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">User Aggrement</font></a></label>
+              <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+             <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Privacy Policy</font></a></label>
+              <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
               <!-- <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Cookie Policy</font></a></label> -->
-
+              <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
               <label class="a"><a href="#" style="text-decoration:none;"><font style="color:#fff">Copyright Policy</font></a></label>
 
     </span>
 </div> <!-- End Of Page Footer -->
 
+<script>
+    function showMyImage(fileinput){
+        var files = fileinpiut.files;
+        for (var i = 0; i < files.length ; i++) {
+            var file = files[i];
+            var imageType = /image.*/;
+            if (!file.type.match(imageType)) {
+                continue;
+            }
+
+            var img = document.getElementById('limage');
+            img.file = file ;
+            var reader = new FileReader();
+            reader.onload = (function(aImg){
+                return function(e){
+                    aImg.src = e.target.result;
+                };
+            })(img);
+            reader.readAsDataURL(file);
+        }
+    }
+
+        function showMyPdf(fileinput2){
+            var files = fileinput2.files;
+            for(var i = 0 ;i < files.length ; i++) {
+                var file = files[i];
+                var pdfType = /pdf.*/;
+                if(!file.type.match(p dfType)) {
+                    continue;
+                }
+
+                var pdf = document.getElementById('lpdf');
+                pdf.file = file ;
+                var reader = new FileReader();
+                reader.onload = (function(aPdf){
+                    return function(e){
+                        aPdf.src = e.target.result;
+                    };
+                })(pdf);
+                reader.readAsDataURL(file);
+            }
+        }
+
+</script>
+</body>
+</html>
 
 <script type="text/javascript">
       // code from w3 schools

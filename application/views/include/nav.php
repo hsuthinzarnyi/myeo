@@ -18,7 +18,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png" width="35px"></span><b class="caret"></b></a>
             <ol class="dropdown-menu" style="background-color:#CCC">
                 <div style="background-color: #CCC">
-                  <label>HSu Thinzar Nyi</label>
+                  <label><?php echo $data->name;?></label>
                   <a href="<?=base_url();?>profile/create"><h5 style="color: black">Edit Profile</h5></a>
                   <a href="<?=base_url();?>logout/logout"><h5 style="color: black">Log Out</h5></a>
                 </div>

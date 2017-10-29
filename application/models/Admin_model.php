@@ -36,6 +36,11 @@
 			$all_opp=$this->db->get('opportunity');
 			return $all_opp->result();
 		}
+		function opportunity_edit($data,$oppdetail_id){
+			$this->db->where('oppdetail_id',$oppdetail_id);
+			$result=$this->db->update('opp_detail',$data); //to check with values alreay added
+			return $result;
+		}
 		function skilldetail_getall(){
 			$this->load->database();
 			$query=$this->db->get("skill_detail");

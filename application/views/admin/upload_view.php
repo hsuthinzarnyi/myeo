@@ -1,40 +1,43 @@
-<!-- ==========PAGE HEADER============ --> 
+
+
+<!-- HSU THINAR NYI -->
+<!-- ===========PAGE HEADER=========== -->
 <div class="col-md-12">
-<div class="row"   style="background-color:#004167" style="position:fixed;" >
-<span  padding-top="5px">
-    <label class="col-md-3">
-        <img src="<?=base_url();?>/images/myeo_logo.png" style="padding-top:11px" width="65"  height="63" class='col-md-offset-2' />
+<div class="row pg_header"  style="background-color:#004167" >
+<!-- <span class="label_tag"> -->
+    <label class="col-md-3" id="navigations">
+        <img src="<?=base_url();?>/images/myeo_logo.png"  width="71"  height="63" class='col-md-offset-2' />
     </label>
-    <div class="col-md-offset-5" style="padding:20px;">
-            <a href="<?=base_url();?>Admin/upload"><font style="color:#fff">Upload Contents</font></a> &nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class=" col-md-offset-4" style="padding-top:15px" >
+          <a href="<?=base_url();?>Admin/upload"><font style="color:#fff">Upload Contents</font></a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="<?=base_url();?>Admin/get_oppdetail"><font style="color:#fff">Opportunity</font></a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="<?=base_url();?>Admin/get_skilldetail/"><font style="color:#fff">Skills</font></a> 
-
-           <ol class="dropdown pull-right" style="margin-right: 25px"> 
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png" width="35px"></span><b class="caret"></b></a>
+    <!-- ==============PROFILE ICON=================== -->
+       <ol class="dropdown pull-right" style="margin-right: 25px"> 
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png" width="1px"></span><b class="caret"></b></a>
             <ol class="dropdown-menu" style="background-color:#CCC">
-                <!-- <div class="col-md-4"><img src="<?=base_url();?>pp.PNG"></div> -->
                 <div style="background-color: #CCC">
-                  <label>HSu Thinzar Nyi</label>
+                  <label><?php echo $data->name;?></label>
                   <a href="<?=base_url();?>profile/create"><h5 style="color: black">Edit Profile</h5></a>
                   <a href="<?=base_url();?>logout/logout"><h5 style="color: black">Log Out</h5></a>
                 </div>
             </ol>
-            </ol>
-        </div>
- </span>
+            </ol> 
+            <!-- END OF PROFILE ICON -->
 
-</div><!-- End Of Page Header -->
-</div><!-- End Of Page Header -->
-<!-- HTN -->
+    </div>
+</span>
+</div>
+</div>
 
 <!-- ===========BODY============ -->
 
 <div class=" container1 col-md-8 col-md-offset-2 " style="padding-top:10px;"> <!-- f0f0f0 eceff1 efebe9 fafafa eeeeee e3f2fd bbdffb e0e0e0 EFEBE9 -->
-    <center><h1>Create Your Informations</h1></center>
     <?php echo form_open(base_url().'Admin/upload', 'class="form-horizontal" method="post" ')?> 
     <br/>
     <div class="col-md-10 col-md-offset-1">
+        <center><h1>Create Your Informations</h1></center>
         
         <div class="form-group">
             <label>TITLE: </label></br>
@@ -48,15 +51,15 @@
             <label>DESCRIPTION:</label></br>
             
             
-            <?php echo $this->ckeditor->editor('desccription')?>
+            <?php echo $this->ckeditor->editor('description')?>
 
         </div>
         <div class="form-group">
             <label class="col-md-5 control-label">CHOOSE TYPE: </label> 
             <div class="col-md-5">
-                <input type="radio" name="choice" id="oppchoice" onclick="showOne('opp')"> 
+                <input type="radio" name="choice" value=1 id="oppchoice" onclick="showOne('opp')"> 
                 <label>Opportunity</label>
-                <input type="radio" name="choice" id="skillchoice" onclick="showOne('skill')"> <label>Skill</label>
+                <input type="radio" name="choice" value=2 id="skillchoice" onclick="showOne('skill')"> <label>Skill</label>
             </div>
         </div> 
         <div class="row">       
@@ -89,42 +92,49 @@
             </ul>
         </div>    
         <div class="form-group">
-            <label class="col-md-5 control-label"> CHOOSE TO UPLOAD PICTURE or VEDIO</label>
+            <label class="col-md-5 control-label"> CHOOSE TO UPLOAD PICTURE or VIDEO</label>
             <div class="col-md-5">
-                <input type="radio" name="uploadchoice" value=1 data-toggle="collapse" class="accordion-toggle" data-target="#image">
+                <input type="radio" name="uploadchoice" value=1 id="imagechoice" onclick="showOne('image')">
                 <label>Image</label>
-                <input type="radio" name="uploadchoice" value=2 data-toggle="collapse" class="accordion-toggle" data-target="#vedio">
-                <label>Vedio</label>
+                <input type="radio" name="uploadchoice" value=2 id="videochoice" onclick="showOne('video')">
+                <label>Video</label>
             </div>
         </div>
-            
-        <div class="col-md-offset-5">   
-            <div class="collapse fileinput" id="image">
-                <input type="file" name="imageuploadchoice"  accept="image/*" onchange="showMyImage(this)">
-                <img src="" style="width:60%; margin-top:10px;">
-            </div>
+        <div class="form-group">
+            <ul class="form-group" id="image">
+                <div class="col-md-offset-5">   
+                    <div class=" fileinput">
+                        <input type="file" name="imageuploadchoice"  accept="image/*" onchange="showMyImage(this)">
+                        <img src="" style="width:60%; margin-top:10px;"></label>
+                    </div>
+                </div>
+            </ul>
         </div>
+        
+        <div class="form-group">
+            <ul class="form-group" id="video">
         <div class="form-group collapse col-md-offset-1 " id="vedio">
             <label class="input col-md-5 control-label">Fill Vedio Link : </label>
              <div class="input-placeholder col-md-5"><input type="text" required name="vediouploadchoice" class="form-control">
                   <div class="placeholder" style="margin-left: 11px">
                       <span>*</span> <font color="grey">paste_vedio_link</font>
                   </div>
+            </div>
         </div>
+            </ul>
         </div>
        <!--  </div> -->
         
         <div data-large class="col-md-offset-11">
             <input type="submit" value="Save" class="form-group" >
-            <br/>
+            <br/><br/><br/>
         </div>
-        <br/><br/><br/>
+        <br/>
     </div> <!-- END OF SECOND DIV -->
 </form> <!-- END OF FORM -->
-</div> 
-<!-- END OF FIRST DIV -->
+</div> <!-- END OF FIRST DIV -->
                                  <!--FOR NAV-->
-<!-- <div class="row" style="background-color: #004167;width:100%;position:fixed;">
+<div class="row" style="background-color: #004167;width:102%;position:fixed;top:0;">
    
     <span class="label_tag"> 
         <label class="col-md-3">
@@ -139,7 +149,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png"></span><b class="caret"></b></a>
                 <ul class="dropdown-menu" style="background-color:#CCC">
                     <div class="col-md-4">
-                        <img src="<?=base_url();?>logo.png">
+                        <img src="<?=base_url();?>images/logo.png">
                     </div>
                     <div class="col-md-offset-1">
                         <label>Hsu Thinzar Nyi</label>
