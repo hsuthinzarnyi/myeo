@@ -258,10 +258,11 @@ $(function(){
 }
 .background
 {
-  background: url(images/myeo-background2.jpg);
-  background-size: 100%;
+  /*background: url(images/myeo-background2.jpg);*/
+  background: url(images/background_dark.jpg);
+  background-size: 120%;
   background-origin: 0;
-  min-height: 200px;
+  min-height: 190px;
   background-repeat: no-repeat;
   /*background-position: center center;*/
 }
@@ -354,8 +355,9 @@ body{
 </head>
 <body >
   <!-- ===========PAGE HEADER=========== -->
+
 <div class="col-md-12">
-<div class="row pg_header"  style="background-color:#004167" >
+<div class="row pg_header"  style="background-color:#004167;" >
 <!-- <span class="label_tag"> -->
     <label class="col-md-3" id="navigations">
         <img src="<?=base_url();?>/images/myeo_logo.png"  width="71"  height="63" class='col-md-offset-2' />
@@ -386,12 +388,12 @@ body{
 </div>
 </div>
   <!-- Login Div -->
-  <div height="90px;">
-  <div  class="background" style="background-color:#06c3c3" id="slideshow-container1">
-    <ul style="padding-top:70px;">
+  <div height="80px;" style="padding-top:68px">
+  <div  class="background" style="background-color:#06c3c3;" id="slideshow-container1">
+    <ul style="padding-top:20px;">
       <h1 class="title-class" style="font-family:open-sans"><b>Develop your skills and</b></h1>
       <h1 class="title-class" style="font-family:open-sans;line-height: 1px"><b>discover your next opportunity</b></h1>
-      <h3 class="title-class-3" style="font-family:;padding-top: 12px"><b>Post a new opportunity for free <a href="#" style="text-decoration: underline;color: white;"><font color="white">here</b></font></a></h3>
+      <h3 class="title-class-3" style="padding-top: 12px"><b>Post a new Opportunity for free <a href="#" style="text-decoration: underline;color: white;"><font color="white">here</b></font></a></h3>
     </ul>
     <!-- <div class="row"> -->
       <div class="row justify-content-around margin-pad" height="350px">
@@ -448,9 +450,9 @@ body{
           <!-- </center> -->
         </div>  
       </div>
-    
+    <!-- 
      <div style="background:#A6CAE5;height:40px;"><center><h4 style="padding-top:10px;color:#fff;font-family:open-sans;"><b>FEATURED OPPORTUNITIES</b></h4></center></div>
-  </div>
+  </div> -->
 </div>
 
 <div class="slideshow-container">
@@ -525,13 +527,13 @@ function showSlides() {
    </div>
 
 <!-- ===========PAGE FOOTER=========== -->
-<div class="page_footer col-md-12" id="pg_footer" style="background-color:#004167;height:40px;padding-left:70px">
+<div class="page_footer col-md-12" id="pg_footer" style="height:40px;padding-left:70px;background-color:#004167">
 
   <label class="a">
   <img src="<?=base_url();?>/images/myeo_logo.png"  width="30px;" height="35px;" />
   </label>
   <label class="a">
-  <a href="" style="text-decoration:none;"><font style="color:#fff"><span style="text-align: right"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#fff"><span class="glyphicon glyphicon-copyright-mark"></span>2017</font></span></font></a>
+  <a href="" style="text-decoration:none;"><font style="color:#fff"><span style="text-align: right"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#fff;font-weight: lighter"><span class="glyphicon glyphicon-copyright-mark"></span>2017</font></span></font></a>
   </label>
    <!-- <span style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
    <span style="text-align: right">

@@ -16,23 +16,39 @@ class Opportunity extends CI_Controller
 		$this->load->model('Opportunity_model');
 		$this->load->model('Skill_model');
 		$this->load->model('Custom_model');
-    	$this->load->library('encrypt');
+    $this->load->library('encrypt');
+    $this->load->model('Sample_model','',TRUE);
+    $this->load->library('pagination');
 	}
 
 	function index()
 	{
-	
+	 $pag = $this->config->item('pagination');   
+    $pag['base_url'] = base_url().'Opportunity/index';
+    $data['search']=Null;
+    $pag['total_rows'] = $this->Sample_model->count_opp();
+    $this->db->order_by("opp_id",'asc');
+    $data['oppo'] = $this->Sample_model->get_opp($pag['per_page'],$this->uri->segment(3),'desc');
+    $data['pag'] = $pag;
+    // var_dump($data)    ;die();
+    $this->load->view('include/header');
+    $this->load->view('home/opp_search');
+    $data1['oppo']  = $this->Opportunity_model->left_all();
+    $this->load->view('home/opp_left',$data1);
+    $this->load->view('home/opportunity_view',$data);
+    $this->load->view('include/footer');
+    
 
     // $log=$this->session->userdata('logged_in');
     // if($log==NULL)
     // {
-    $this->load->view('include/header');
-		// $this->load->view('include/nav');
-    $this->load->view('home/opp_search');
-		$data['oppo']  = $this->Opportunity_model->getall();
-		$this->load->view('home/opp_left',$data);
-		$this->load->view('home/opportunity_view',$data);
-		$this->load->view('include/footer');
+  //   $this->load->view('include/header');
+		// // $this->load->view('include/nav');
+  //   $this->load->view('home/opp_search');
+		// $data['oppo']  = $this->Opportunity_model->getall();
+		// $this->load->view('home/opp_left',$data);
+		// $this->load->view('home/opportunity_view',$data);
+		// $this->load->view('include/footer');
     	// }
     	// else
     	// {
@@ -54,12 +70,20 @@ class Opportunity extends CI_Controller
        // else{
        //  redirect('login');
        // }
-		$data['oppo']  = $this->Opportunity_model->getall();
-		$data1['oppo']  = $this->Opportunity_model->oppdetail($opp_id);
+    $pag = $this->config->item('pagination');   
+    $pag['base_url'] = base_url().'Opportunity/oppdetail';
+    $data['search']=Null;
+    $pag['total_rows'] = $this->Sample_model->count_opp();
+    // $this->db->order_by("opp_id",'asc');
+    // $data['oppo'] = $this->Sample_model->get_opp($pag['per_page'],$this->uri->segment(3),'desc');
+    $data['pag'] = $pag;
+
+		$data1['oppo']  = $this->Opportunity_model->getall();
+		$data['oppo']  = $this->Opportunity_model->oppdetail($opp_id);
 		$this->load->view('include/header');
 		$this->load->view('home/opp_search');
-		$this->load->view('home/opp_left',$data);
-		$this->load->view('home/opportunity_view',$data1);
+		$this->load->view('home/opp_left',$data1);
+		$this->load->view('home/opportunity_view',$data);
 		$this->load->view('include/footer');
 	}
 	function search()
@@ -73,11 +97,18 @@ class Opportunity extends CI_Controller
       $this->form_validation->set_rules('search','Search','required|xss_clean|required');
       if($this->form_validation->run()==FALSE)
       {
-		    $data1['oppo']  = $this->Opportunity_model->getall();
+       $pag = $this->config->item('pagination');   
+        $pag['base_url'] = base_url().'Opportunity/search';
+        $data['search']=Null;
+        $pag['total_rows'] = $this->Sample_model->count_opp();
+        // $this->db->order_by("opp_id",'asc');
+        $data['oppo'] = $this->Opportunity_model->search($pag['per_page'],$this->uri->segment(3),'desc');
+        $data['pag'] = $pag;
+		    $data1['oppo']  = $this->Opportunity_model->left_all();
       	$this->load->view('include/header');
       	$this->load->view('home/opp_search');
 		    $this->load->view('home/opp_left',$data1);
-      	$this->load->view('home/opportunity_view',$data1 );
+      	$this->load->view('home/opportunity_view',$data);
       	$this->load->view('include/footer'); 
       }
       else
@@ -89,18 +120,33 @@ class Opportunity extends CI_Controller
              // var_dump($check);die();
              if ($check==NULL) 
              {
+                $pag = $this->config->item('pagination');   
+                $pag['base_url'] = base_url().'Opportunity/index';
+                $data2['search']=Null;
+                $pag['total_rows'] = $this->Sample_model->count_opp();
+                // $this->db->order_by("opp_id",'asc');
+                $data2['oppo'] = $this->Sample_model->get_opp($pag['per_page'],$this->uri->segment(3),'desc');
+                $data2['pag'] = $pag;
+
                 $data2['res'] = "Do not match";
-                $data1['oppo']  = $this->Opportunity_model->getall();
-                $data['oppo'] = $this->Opportunity_model->search($search);
+                $data1['oppo']  = $this->Opportunity_model->left_all();
+                // $data['oppo'] = $this->Opportunity_model->search($search);
                 $this->load->view('include/header');
                 $this->load->view('home/opp_search');
                 $this->load->view('home/opp_left',$data1);
-                $this->load->view('home/opportunity_view',$data2,$data);
+                $this->load->view('home/opportunity_view',$data2);
                 // $this->load->view('home/opportunity_view',$data);
                 $this->load->view('include/footer');
              }
              else
              {
+                $pag = $this->config->item('pagination');   
+                $pag['base_url'] = base_url().'Opportunity/search';
+                $data['search']=Null;
+                $pag['total_rows'] = $this->Sample_model->count_opp();
+                // $this->db->order_by("opp_id",'asc');
+                // $data['oppo'] = $this->Sample_model->get_opp($pag['per_page'],$this->uri->segment(3),'desc');
+                $data['pag'] = $pag;
                 $data1['oppo']  = $this->Opportunity_model->getall();
                 $data['oppo'] = $this->Opportunity_model->search($search);
                 $this->load->view('include/header');

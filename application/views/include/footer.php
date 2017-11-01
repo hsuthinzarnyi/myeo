@@ -1,11 +1,11 @@
 <!-- ===========PAGE FOOTER=========== -->
-<div class="page_footer col-md-12" id="pg_footer" style="background-color:#004167;height:40px;padding-left:70px">
+<div class="page_footer col-md-12" id="pg_footer" style="background-color:#004167;height:40px;padding-left:70px;">
 
   <label class="a">
   <img src="<?=base_url();?>/images/myeo_logo.png"  width="30px;" height="35px;" />
   </label>
-  <label class="a">
-  <a href="" style="text-decoration:none;"><font style="color:#fff"><span style="text-align: right"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#fff"><span class="glyphicon glyphicon-copyright-mark"></span>2017</font></span></font></a>
+  <label class="a" >
+  <a href="" style="text-decoration:none;"><font style="color:#fff"><span style="text-align: right"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="color:#fff" ><span class="glyphicon glyphicon-copyright-mark"></span><label style="font-weight: lighter;">2017</label></font></span></font></a>
   </label>
    <!-- <span style="text-align: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
    <span style="text-align: right">

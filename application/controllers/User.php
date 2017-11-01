@@ -293,11 +293,17 @@ class User extends CI_Controller
             // $sess_array=array('id'=>$result['user_id'],'username'=>$result['name'],'password'=>$result['password']);
             //  $this->session->set_userdata('logged_in',$sess_array);
             $result['data']=$this->User_model->getuser($email);
-            
             $this->load->view('include/header');
-            
-            $this->load->view('home/profile_page',$result);
+            $this->load->view('include/nav',$result);
+            $data['oppo']  = $this->Opportunity_model->getall();
+            $data ['skill'] = $this->Skill_model->getall();
+            $this->load->view('home/left_view',$data);
+            $this->load->view('home/custom_view',$data);
             $this->load->view('include/footer');
+            // $this->load->view('include/header');
+            
+            // $this->load->view('home/profile_page',$result);
+            // $this->load->view('include/footer');
            
           }
         }

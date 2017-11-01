@@ -136,11 +136,28 @@ $(function(){
 
 /*.row .nav a:visited{color: #85EC14;}*/
 
-.row .nav a:active{color: #85EC14;}
+/*.row a:focus{color: #85EC14;
+font-style: italic;
+background-color: red;}*/
 
-.row .nav a:hover{
-     color: #85EC14;
+/*a:focus{
+  font-style: italic;
+  color: #85EC14;
+  background-color: red;
 }
+*/
+/*.aa a:hover,
+.row .aa a:focus{
+     color: #85EC14;
+}*/
+.row > .aa > a:hover,
+.row > .aa > a:focus ,
+.row > .aa > a:active {
+  color: #85EC14;
+  text-decoration: none;
+  /*cursor: not-allowed;*/
+}
+
 .row1 .left a
 {
   /*height: 800px;*/
@@ -155,6 +172,10 @@ $(function(){
 
 .page_footer{position: relative; 
              }
+
+.page_footer .a{
+  font-weight: lighter;
+}
 
 .right_title{
   position: fixed;
@@ -197,7 +218,6 @@ $(function(){
     width: 75%;
     float: right;
     background-color:#F0f0f0;
-    height: 4000px;
 }
 
 .left 
@@ -302,8 +322,40 @@ position: fixed;}*/
       .placeholder span {
         color: red;
       }
+      .oppo label{
+        font-weight: lighter;
+      }
+
+      .section-cards .card a {
+  opacity: .93;
+}
 
 
+/*.card p {
+  min-height: 0;
+}*/
+
+/*.card {
+  background: #fff;
+  /*box-shadow: 0 32px 44px -24px rgba(0, 0, 0, 0.23), 0 20px 25px 0px rgba(0, 0, 0, 0.12), 0 15px 10px -10px rgba(0, 0, 0, 0.2);*/
+  border-radius: 6px;
+  margin-bottom: 30px;
+  -webkit-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+  -moz-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+  -o-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+  -ms-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+  transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
+}*/
+/*.card:not(.card-plain):not(.card-price):hover {
+  -webkit-transform: scale(1.02);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.05);
+  -ms-transform: scale(1.03);
+  transform: scale(1.3);
+  box-shadow: 0 26px 50px -10px rgba(0, 0, 0, 0.38), 0 10px 20px 0px rgba(0, 0, 0, 0.2), 0 15px 10px -10px rgba(0, 0, 0, 0.2);
+}*/
+
+.aa{color: #000;}
 </style>
 <!--HTZN-->
 <script type="text/javascript">

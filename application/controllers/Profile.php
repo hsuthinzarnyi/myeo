@@ -87,12 +87,12 @@ class Profile extends CI_Controller
       $Digital     =  $this->input->post('8');
       $Cover       =  $this->input->post('9');
       $Entrepreneurship = $this->input->post('0');
-      var_dump($Communation,$Leadership,$Public,$Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship,'hhh');
+      
       $image  = $this->img_upload();
       $cv     = $this->pdf_upload();
       $letter = $this->pdf_upload1();
       $video  = $this->video_upload();
-      var_dump($name, $education, $location, $sentence,$UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition,$Communation, $Leadership, $Public, $Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship,'kkkk',$image,'img',$cv,$letter,'vd',$video);die();
+      var_dump($name, $education, $location, $sentence,$UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition,$Communation, $Leadership, $Public, $Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship,'kkkk',$image,'<=img',$cv,$letter,'vd=>',$video);die();
 
       $result = $this->Profile_model->create( $image, $cv, $letter, $video);
       $result2=$this->Profile_model->add($UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition);

@@ -26,6 +26,7 @@
 			$data['all_opp']=$this->Admin_model->opportunity();
 			$data['all_skill']=$this->Admin_model->skill();
 			$this->load->view('include/header');
+			$this->load->view('admin/admin_nav');
 			$this->load->view('admin/upload_view',$data);
 			$this->load->view('include/footer');
 		}

@@ -14,7 +14,7 @@
             <span style="padding-left: 35px;color: white">|</span>
          <a href="<?=base_url();?>skill" style="font-size: 20px;text-decoration: none;color: white;margin-left: 55px">Skills</a>
     <!-- ==============PROFILE ICON=================== -->
-        <ol class="dropdown pull-right" style="margin-right: 25px"> 
+        <ol class="dropdown pull-right" style="margin-right: 65px"> 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png" width="35px"></span><b class="caret"></b></a>
             <ol class="dropdown-menu" style="background-color:#CCC">
                 <div style="background-color: #CCC">
