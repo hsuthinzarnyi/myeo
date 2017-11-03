@@ -1,30 +1,35 @@
 <!-- HSU THINAR NYI -->
 <!-- ===========PAGE HEADER=========== -->
-
-<div class="row"   style="background-color:#004167" style="position:fixed;" width="100%">
-<span  padding-top="5px">
-    <label class="col-md-3">
-        <img src="<?=base_url();?>/images/myeo_logo.png" style="padding-top:11px" width="71"  height="63" class='col-md-offset-2' />
+<div class="col-md-12">
+<div class="row pg_header"  style="background-color:#004167" >
+<!-- <span class="label_tag"> -->
+    <label class="col-md-3" id="navigations">
+        <img src="<?=base_url();?>/images/myeo_logo.png"  width="71"  height="63" class='col-md-offset-2' />
     </label>
-    <div class="nav col-md-offset-4"  >
-          <a href="<?=base_url();?>custom" style="text-decoration:none;padding-right:80px;"><font style="color:#fff;font-size:20px">Home</font><a>
 
-          <a href="<?=base_url();?>opportunity" style="text-decoration:none;padding-right:80px;"><font style="color:#fff;font-size:20px">Opportunities</font></a>
-
-         <a href="<?=base_url();?>skill" style="text-decoration:none;"><font style="color:#fff;font-size:20px">Skills</font></a>
+    <div class=" col-md-offset-4" style="padding-top:15px" >
+          <a href="<?=base_url();?>custom" style="color: #85EC14;font-size: 20px;text-decoration: none;">Home<a>
+            <span style="padding-left: 65px;color: white;margin-right:">|</span>
+          <a href="<?=base_url();?>opportunity" style="padding-right:30px;padding-left: 55px;font-size: 20px;text-decoration: none;color: white">Opportunities</a>
+            <span style="padding-left: 35px;color: white">|</span>
+         <a href="<?=base_url();?>skill" style="font-size: 20px;text-decoration: none;color: white;margin-left: 55px">Skills</a>
     <!-- ==============PROFILE ICON=================== -->
-        <ol class="dropdown pull-right"> 
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png"></span><b class="caret"></b></a>
+        <ol class="dropdown pull-right" style="margin-right: 65px"> 
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png" width="35px"></span><b class="caret"></b></a>
             <ol class="dropdown-menu" style="background-color:#CCC">
-                <div class="col-md-4"><img src="<?=base_url();?>pp.PNG"></div>
-                <div class="col-md-offset-1">
-                  <label>HSu Thinzar Nyi</label>
-                  <a href="<?=base_url();?>profile/" class="btn" style="background-color:#004167"><font style="color:#fff">EDIT Your Profile</font></a>
+                <div style="background-color: #CCC">
+                  <label><?php echo $data->name;?></label>
+                  <a href="<?=base_url();?>profile/create"><h5 style="color: black">Edit Profile</h5></a>
+                  <a href="<?=base_url();?>logout/logout"><h5 style="color: black">Log Out</h5></a>
                 </div>
             </ol>
-            </ol><!-- END OF PROFILE ICON -->
+            </ol> 
+            <!-- END OF PROFILE ICON -->
 
     </div>
-  </span>
+</span>
+</div>
+</div>
 
-</div><!-- End Of Page Header -->
+
+<!--  -->

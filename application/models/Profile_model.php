@@ -22,7 +22,7 @@ class Profile_model extends CI_Model
 
 	function add($UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition)
 	{
-		$array = array('name' =>$name ,'education'=>$education,'location'=>$location,'sentence'=>$sentence,'UG_scholar'=>$UG_scholar,'Master'=>$Master,'PHD'=>$PHD,'Internship'=>$Internship,'Conterence'=>$Conterence,'Training'=>$Training,'Jobs'=>$Jobs,'Competition'=>$Competition );
+		$array = array('UG_scholar'=>$UG_scholar,'Master'=>$Master,'PHD'=>$PHD,'Internship'=>$Internship,'Conterence'=>$Conterence,'Training'=>$Training,'Jobs'=>$Jobs,'Competition'=>$Competition );
 		var_dump($array);die();
 		$this->db->insert('user_opp',$array);
 	}

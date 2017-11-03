@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
 * 
 */
@@ -21,22 +21,35 @@ class User extends CI_Controller
     $this->load->library('ckfinder');
     $this->load->helper('security');
     $this->load->library('encrypt');
+     $this->load->library('pagination');
 
   }
   function index()
   {
-
+       
+    
   }
+       
   function signup()
   {
-      $this->form_validation->set_rules('name','Name','required');
+    $log=$this->session->userdata('logined_in');
+    
+    if(isset($log))
+    {
+      redirect('admin/upload');
+    
+      
+    }
+ else
+ {
+    // var_dump($log);die;
+    $this->form_validation->set_rules('name','Name','required');
       $this->form_validation->set_rules('email','Email','required'); 
       $this->form_validation->set_rules('password','Password','required'); 
-      $this->form_validation->set_rules('cfmpassword','CfmPassword','required'); 
+      $this->form_validation->set_rules('cfmpassword','Confirm Password','required'); 
       if($this->form_validation->run()==FALSE )
       { 
-        $this->load->view('include/header') ;
-        $this->load->view('home/signup_view');
+        $this->load->view('home/login_page');
         // $this->load->view('include/footer');
       }
       else
@@ -44,12 +57,13 @@ class User extends CI_Controller
        $name=$this->input->post('name');
        $email=$this->input->post('email');
        $password=sha1($this->input->post('password'));
-       $cfmpassword=sha1($this->input->post('cfmpassword'));
+       $cfmpassword=sha1($this->input->post('cfpassword'));
+<<<<<<< HEAD
       
     if($password==$cfmpassword)
     {
        $result=$this->User_model->check($name,$email,$password);
-        // var_dump($result);die();
+        var_dump($result);die();
        if($result!=NULL)
        {
            $this->load->view('user/error');
@@ -57,48 +71,101 @@ class User extends CI_Controller
        }
        else
        {
+        var_dump('err');
          $this->User_model->signup($name,$email,$password);
-         // var_dump($result);die();
+         var_dump($result);die();
          $this->load->view('user/signup');
        }
       
+=======
+        var_dump($name,$email,$password,$cfmpassword);die();
+    if($password==$cfmpassword)
+    {
+       $result=$this->User_model->check($name,$email,$password);
+        // var_dump($result);die();
+       if($result!=NULL)
+       {
+          $message=$this->session->set_flashdata('message','You are already exit!!!');
+           $this->load->view('include/header');
+           $this->load->view('home/login_page',$message);
+           $this->load->view('include/footer');
+        
+       }
+       else
+       {
+         $this->User_model->signup($name,$email,$password);
+         // var_dump($id);die();
+         // $sess_array=array('username'=>$name,'email'=>$email);
+          // $this->session->set_userdata('name',$name);
+         $this->session->set_userdata('email',$email);
+         redirect('profile/create');
+       }
+      
+    }
+    
+   }
+ }
+}
+  function check_name($name)
+  {
+    if(preg_match('/^[a-zA-Z_\s]+$/', $name))
+    {     
+      return $name;
+>>>>>>> master
     }
     else
     {
-          $this->load->view('home/signup_view');
+      $this->form_validation->set_message('check_name','Only letter and space allowed');
+      return FALSE;
     }
-   }
+  }
+  function check_name($name)
+  {
+    if(preg_match('/^[a-zA-Z_\s]+$/', $name))
+    {     
+      return $name;
+    }
+    else
+    {
+      $this->form_validation->set_message('check_name','Only letter and space allowed');
+      return FALSE;
+    }
   }
   function login()
   {
-    // $log=$this->session->userdata('logined_in');
+      $log=$this->session->userdata('logined_in');
+       
+    if(isset($log))
+    {
+      var_dump("Hello");die();
     
-    // if(isset($log))
-    // {
-    //   redirect('user/unaccept_get');
-    // }
-    // else
-    // {
+      
+    }
+ else
+ {
       $this->form_validation->set_rules('email','Email','required');
       $this->form_validation->set_rules('password','Password','required');
       if($this->form_validation->run()==FALSE )
         { 
-          // $this->load->view('include/header') ;
           $this->load->view('home/login_page');
-          // $this->load->view('include/footer');
         }
         else
         { 
           $email=$this->input->post('email');
+          // var_dump($email);die();
           $password=sha1($this->input->post('password'));
           $result=$this->User_model->login($email,$password);
           // var_dump($result);die();
+          
+            
           if($result==NULL)
           {
             redirect('user/login');
           }
           else if($result['name']=='koko' && $result['email']='koko@gmail.com')
-          {
+          { 
+             $sess_array=array('id'=>$result['user_id'],'username'=>$result['name'],'password'=>$result['password']);
+             $this->session->set_userdata('logged_in',$sess_array);
             
             $this->form_validation->set_rules('title','Title', 'trim|required');
             $this->form_validation->set_rules('subtitle','Subtitle','trim|required');
@@ -257,18 +324,56 @@ class User extends CI_Controller
           }
           else 
           {
-            
+            // $sess_array=array('id'=>$result['user_id'],'username'=>$result['name'],'password'=>$result['password']);
+            //  $this->session->set_userdata('logged_in',$sess_array);
+            $result['data']=$this->User_model->getuser($email);
             $this->load->view('include/header');
-            $this->load->view('include/nav');
+            $this->load->view('include/nav',$result);
             $data['oppo']  = $this->Opportunity_model->getall();
             $data ['skill'] = $this->Skill_model->getall();
+
             $this->load->view('home/left_view',$data);
             $this->load->view('home/custom_view',$data);
             $this->load->view('include/footer');
-            $this->load->view('include/footer1');
+            // $this->load->view('include/header');
+            
+            // $this->load->view('home/profile_page',$result);
+            // $this->load->view('include/footer');
+           
           }
         }
     }
-  // }
+    
+  }
+    function check_database($password)
+  {
+      // var_dump($password);
+      $email=$this->input->post('email');
+      // var_dump($email);
+      $result=$this->User_model->login($email,$password);
+    // var_dump($result,'hihihi');
+    if ($result) 
+    { 
+      // var_dump($result,'lllll');die();
+      $user_array=array();
+      foreach ($result as $row) 
+      {
+        $user_array=array(
+                'u_id'=>$row->user_id,
+                'user_name'=>$row->name,
+                'email'=>$row->email,
+                'password'=>$row->password);
+        $this->session->set_userdata('logged_in',$user_array);
+        var_dump($user_array);die();
+      }
+      return TRUE;
+    }
+      else
+      {
+        $this->form_validation->set_message('check_database','Invalid email and password');
+        return FALSE;
+      }
+  }
+  // } 
 }
 ?>

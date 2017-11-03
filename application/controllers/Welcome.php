@@ -25,7 +25,7 @@ class Welcome extends CI_Controller {
 	}
     public function hello()
     {
-    	
-    	$this->load->view('hello');
+    	$this->load->view('include/header');
+    	$this->load->view('hello_view');
     }
 }

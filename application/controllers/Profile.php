@@ -12,18 +12,22 @@ class Profile extends CI_Controller
 	  $this->load->helper('security');
     $this->load->helper('form');
 		$this->load->model('Profile_model');
+    $this->load->model('User_model');
 	}
 
 	function index()
 	{
-		$this->load->view('include/header');
+		// $this->load->view('include/header');
     // $this->load->view('include/nav');
-		$this->load->view('home/profile_page');
-		$this->load->view('include/footer');
+		// $this->load->view('home/profile_page');
+		// $this->load->view('include/footer');
 	}
 
 	function create()
   {
+     $email=$this->session->userdata('email');
+    // var_dump($username,$email);die();
+     $result['data']=$this->User_model->getuser($email);
      $this->form_validation->set_rules('name','Name','required');
      $this->form_validation->set_rules('education','Education','required');
      $this->form_validation->set_rules('location','Location','required');
@@ -38,23 +42,24 @@ class Profile extends CI_Controller
      $this->form_validation->set_rules('Jobs','Jobs');
      $this->form_validation->set_rules('Competition','Competition');
 
-     $this->form_validation->set_rules('Communation','Communation');
-     $this->form_validation->set_rules('Leadership','Leadership');
-     $this->form_validation->set_rules('Public','Public');
-     $this->form_validation->set_rules('Application','Application');
-     $this->form_validation->set_rules('Interview','Interview');
-     $this->form_validation->set_rules('critical','critical');
-     $this->form_validation->set_rules('Creative','Creative');
-     $this->form_validation->set_rules('Digital','Digital');
-     $this->form_validation->set_rules('Cover','CV');
-     $this->form_validation->set_rules('Entrepreneurship','Entrepreneurship');
+     $this->form_validation->set_rules('1','1');
+     $this->form_validation->set_rules('2','2');
+     $this->form_validation->set_rules('3','3');
+     $this->form_validation->set_rules('4','4');
+     $this->form_validation->set_rules('5','5');
+     $this->form_validation->set_rules('6','6');
+     $this->form_validation->set_rules('7','7');
+     $this->form_validation->set_rules('8','8');
+     $this->form_validation->set_rules('9','9');
+     $this->form_validation->set_rules('0','0');
 
      if($this->form_validation->run() == FALSE)
 
      {
        // echo "Hello world";
         $this->load->view('include/header');
-        $this->load->view('home/profile_page');
+        $this->load->view('home/profile_page',$result);
+        $this->load->view('include/footer');
      }
      else
      {
@@ -72,22 +77,23 @@ class Profile extends CI_Controller
       $Jobs      = $this->input->post('Jobs');
       $Competition= $this->input->post('Competition');
 
-      $Communation= $this->input->post('Communation');
-      $Leadership = $this->input->post('Leadership');
-      $Public     = $this->input->post('Public');
-      // var_dump($Communation,$Leadership,$Public);die();
-      $Application= $this->input->post('Application');
-      $Interview  = $this->input->post('Interview');
-      $critical   = $this->input->post('critical');
-      $Creative   = $this->input->post('Creative');
-      $Digital    = $this->input->post('Digital');
-      $Cover      = $this->input->post('Cover');
-      $Entrepreneurship = $this->input->post('Entrepreneurship');
+      $Communation = $this->input->post('1');
+      $Leadership  = $this->input->post('2');
+      $Public      = $this->input->post('3');
+      $Application =  $this->input->post('4');
+      $Interview   =  $this->input->post('5');
+      $critical    = $this->input->post('6');
+      $Creative    = $this->input->post('7');
+      $Digital     =  $this->input->post('8');
+      $Cover       =  $this->input->post('9');
+      $Entrepreneurship = $this->input->post('0');
+      
       $image  = $this->img_upload();
       $cv     = $this->pdf_upload();
       $letter = $this->pdf_upload1();
       $video  = $this->video_upload();
-      // var_dump($name, $education, $location, $sentence,$UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition,$Communation, $Leadership, $Public, $Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship);die();
+      var_dump($name, $education, $location, $sentence,$UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition,$Communation, $Leadership, $Public, $Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship,'kkkk',$image,'<=img',$cv,$letter,'vd=>',$video);die();
+
       $result = $this->Profile_model->create( $image, $cv, $letter, $video);
       $result2=$this->Profile_model->add($UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition);
       if($result2)
@@ -123,6 +129,7 @@ class Profile extends CI_Controller
       if ( ! $this->upload->do_upload('image'))
                 {
                         $error = array('error' => $this->upload->display_errors());
+                        $this->load->view('home/profile_page',$error);
                         return $error;
                 }
                 else

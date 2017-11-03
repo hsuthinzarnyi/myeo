@@ -1,4 +1,4 @@
-<?php if(!defined('BASEPATH')) exit ('No Direct Script Access Allowed');
+<!-- <?php if(!defined('BASEPATH')) exit ('No Direct Script Access Allowed');
  /**
  * 
  */
@@ -37,4 +37,4 @@
  		$userId:false;
  	}
  }
-?>
+?> -->

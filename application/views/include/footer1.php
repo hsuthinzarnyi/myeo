@@ -69,17 +69,17 @@
             }
         }
 
-  $(document).ready(function(){
-    $("#skill").click(function(){
-      $("#chart-nav").text('show');
-      $("#pagesr-nav").text('hide');
+  // $(document).ready(function(){
+  //   $("#skill").click(function(){
+  //     $("#chart-nav").text('show');
+  //     $("#pagesr-nav").text('hide');
 
-      $("#opp").click(function(){
-        $("#chart-nav").text('hide');
-        $("#pagesr-nav").text('show');
-      });
-    });
-  });
+  //     $("#opp").click(function(){
+  //       $("#chart-nav").text('hide');
+  //       $("#pagesr-nav").text('show');
+  //     });
+  //   });
+  // });
       // $("#show").text("hide");
 
 </script>

@@ -11,7 +11,9 @@
 		}
 		public function index()
 		{
-			$this->GetAll();
+			// $this->GetAll();
+			$this->load->view('member_view');
+
 		}
 		function GetAll()
 		{
