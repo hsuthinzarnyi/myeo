@@ -63,7 +63,7 @@
             <label class="col-md-5 control-label">CHOOSE TYPE: </label>
             <div class="col-md-5">
                 <input type="radio" name="choice" value=1 <?php echo 'checked'?>> <label > OPPORTUNITY </label> 
-                <input type="radio" name="choice" value=2 data-toggle="collapse" class="accordion-toggle" data-target="#skill" > <label >SKILL</label>
+                <input type="radio" name="choice" value=2 disabled="disabled"> <label >SKILL</label>
             </div>
         </div>
 
@@ -83,54 +83,42 @@
                 </select>
             </div>
         </div>
-        <div class="form-group col-md-offset-1 collapse" id="skill">
-            <label class="col-md-5  control-label">CHOOSE ONE SUITABLE SKILL:</label>
-            <div class="col-md-5 ">
-                <select name="skillchoice" class="chosen-select form-control" >
-                    <?php 
-                        foreach($all_skill as $all){
-                            echo "<option value='".$all->skill_id."'>".$all->type."</option>";
-                        }
-                    ?>
-                </select>
-            </div>
-        </div>
+        
         <div class="form-group">
             <label class="col-md-5 control-label"> CHOOSE TO UPLOAD PICTURE or VEDIO</label>
             <div class="col-md-5">
                 <?php
                     if($image){
                         echo "<input type='radio' name='uploadchoice' value=1 id='imagechoice' checked> <label>Image</label>
-                            <input type='radio' name='uploadchoice' value=2 id='videochoice'> <label>Video</label>";
+                            <input type='radio' name='uploadchoice' value=2 id='videochoice' disabled='disabled'> <label>Video</label>";
                     }elseif($vdlink){
-                        echo "<input type='radio' name='uploadchoice' value=1 id='imagechoice'> <label>Image</label>
-                            <input type='radio' name='uploadchoice' value=2 id='videochoice' checked> <label>Video</label>";
-                    }// }else{
-                    //     echo "<input type='radio' name='uploadchoice' value=1 > <label>Image</label>
-                    //     <input type='radio' name='uploadchoice' value=2> <label>Video</label>";
-                    // }
+                        echo "<input type='radio' name='uploadchoice' value=1 id='imagechoice' disabled='disabled'> <label>Image</label>
+                            <input type='radio' name='uploadchoice' value=2 id='videochoice' checked> <label>Video</label>
+                            "; 
+                    } 
                 ?> 
             </div>
         </div>
-         <div class="form-group" id="image" > <!-- style="display:none" -->
-            <!-- <ul class="form-group" id="image"> -->
-                <div class="col-md-offset-5">   
-                    <div class=" fileinput">
-                        <input type="file" name="imageuploadchoice"  accept="image/*" onchange="showMyImage(this)" value="<?=$image?>">
-                        <img src="" style="width:60%; margin-top:10px;"></label>
-                        <input type="hidden" name="imageuploadchoice1" value="<?=$image;?>">
+         <?php if($image) { ?>
+            <div class="form-group" id="image">
+                <div class="col-md-offset-5">
+                    <div class="fileinput">
+                        <input type="file" name="imageuploadchoice" accept="image/*" onchange="showMyImage(this)" value="<?=$image?>">
+                        <img src="" style="width: 60%; margin-top: 10px;">
+                        <input type="hidden" name="imageuploadchoice1" value="<?=$image?>">
                     </div>
                 </div>
-           <!--  </ul> -->
-        </div>
-        <div class="form-group" id="video" > <!-- style="display:none" -->
-            <!-- <ul class="form-group" id="video"> -->
-                <label class="col-md-5 control-label">Fill Video Link : </label>
-                <div class="col-md-5">
-                    <input type="text" name="videouploadchoice" value="<?=$vdlink;?>" class="form-control">
-                </div>
-            <!-- </ul> -->
-        </div>
+            </div>
+        <?php }elseif($vdlink){?>
+            <div class="form-group" id="video" > <!-- style="display:none" -->
+                <!-- <ul class="form-group" id="video"> -->
+                    <label class="col-md-5 control-label">Fill Vedio Link : </label>
+                    <div class="col-md-5">
+                        <input type="text" name="videouploadchoice" value="<?=$vdlink;?>" class="form-control">
+                    </div>
+                <!-- </ul> -->
+            </div>
+        <?php }?> 
         <div data-large class="col-md-offset-11">
         <input type="submit" value="Save" class="form-group" >
         <br/> 

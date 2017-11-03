@@ -26,7 +26,6 @@
 			$data['all_opp']=$this->Admin_model->opportunity();
 			$data['all_skill']=$this->Admin_model->skill();
 			$this->load->view('include/header');
-			$this->load->view('admin/admin_nav');
 			$this->load->view('admin/upload_view',$data);
 			$this->load->view('include/footer');
 		}
@@ -71,6 +70,7 @@
 											"opp_description"=>$this->input->post("description"),
 											"opp_title"=>$this->input->post("title"),
 											"opp_subtitle"=>$this->input->post("subtitle"));
+								//var_dump($data);die();
 								$result=$this->Admin_model->opportunity_upload($data);
 								if($result){
 									echo "Successful Uploading Opportunity";
@@ -79,14 +79,14 @@
 								}
 							}
 						}elseif($uploadchoiceid == "2"){
-							$this->form_validation->set_rules('vediouploadchoice','VedioUploadChoice','required');
+							$this->form_validation->set_rules('videouploadchoice','VideoUploadChoice','required');
 							if($this->form_validation->run()==FALSE){
 								$this->load->view('include/header');
 								$this->load->view('admin/upload_view',$data);
 								$this->load->view('include/footer');
 							}else{
 								$data=array("opp_id"=>$this->input->post("opportunitychoice"),
-											"opp_vdlink"=>$this->input->post("vediouploadchoice"),
+											"opp_vdlink"=>$this->input->post("videouploadchoice"),
 											"opp_description"=>$this->input->post("description"),
 											"opp_title"=>$this->input->post("title"),
 											"opp_subtitle"=>$this->input->post("subtitle"));
@@ -121,6 +121,7 @@
 											"skill_description"=>$this->input->post("description"),
 											"skill_title"=>$this->input->post("title"),
 											"skill_subtitle"=>$this->input->post("subtitle"));
+								//var_dump($data);die();
 								$result=$this->Admin_model->skill_upload($data);
 								if($result){
 									echo "Successful Uploading Skill";
@@ -129,14 +130,14 @@
 								}
 							}
 						}elseif($uploadchoiceid=="2"){
-							$this->form_validation->set_rules('vediouploadchoice','VedioUploadChoice','required');
+							$this->form_validation->set_rules('videouploadchoice','VideoUploadChoice','required');
 							if($this->form_validation->run()==FALSE){
 								$this->load->view('include/header');
 								$this->load->view('admin/upload_view',$data);
 								$this->load->view('include/footer');
 							}else{
 								$data=array("skill_id"=>$this->input->post("skillchoice"),
-											"skill_vdlink"=>$this->input->post("vediouploadchoice"),
+											"skill_vdlink"=>$this->input->post("videouploadchoice"),
 											"skill_description"=>$this->input->post("description"),
 											"skill_title"=>$this->input->post("title"),
 											"skill_subtitle"=>$this->input->post("subtitle"));
@@ -225,7 +226,12 @@
 			}
 		}
 		function delete_opportunity($oppdetail_id){
-
+			$result=$this->Admin_model->opportunity_delete($oppdetail_id);
+			if($result){
+				echo "Successful Deleting Opportunity";
+			}else{
+				echo "Fail Deleting Opportunity";
+			}
 		}
 		function get_skilldetail(){
 			$data['query']=$this->Admin_model->skilldetail_getall();
@@ -233,36 +239,65 @@
 			$this->load->view('admin/getskill_view',$data);
 			$this->load->view('include/footer');
 		}
-		function edit_skill($sdetail_id)
-		{
-			$data['edit']=$this->Admin_model->skilldetail_get($sdetail_id);
-			// var_dump($data); die();
-			$data['all_opp']=$this->Admin_model->opportunity();
-			$data['all_skill']=$this->Admin_model->skill();
-			$this->load->view('include/header');
-			$this->load->view('admin/editskill_view',$data);
-			$this->load->view('include/footer');
+		function edit_skill($sdetail_id){
+			$this->form_validation->set_rules('title','Title', 'trim|required');
+			$this->form_validation->set_rules('subtitle','Subtitle','trim|required');
+			$this->form_validation->set_rules('description','Description','trim|required');
+			$this->form_validation->set_rules('choice','Choice','required');
+			//$this->form_validation->set_rules('skillchoice','SkillChoice','required'); 
+			//need or not for select
+			$this->form_validation->set_rules('uploadchoice','UploadChoice','required');  
+			//need or not for two upload choice
+
+			if($this->form_validation->run()==FALSE){  
+				$data['edit']=$this->Admin_model->skilldetail_get($sdetail_id);
+				// var_dump($data); die();
+				$data['all_opp']=$this->Admin_model->opportunity();
+				$data['all_skill']=$this->Admin_model->skill();
+				$this->load->view('include/header');
+				$this->load->view('admin/editskill_view',$data);
+				$this->load->view('include/footer');
+			}else{ //no filled condition for two upload choice 
+				$uploadchoiceid=$this->input->post("uploadchoice");
+				if($uploadchoiceid=="1"){
+					$data=array("skill_id"=>$this->input->post("skillchoice"),
+								"skill_image"=>$this->input->post("imageuploadchoice"),
+								// "skill_vdlink"=>$this->input->post("null"),
+								"skill_description"=>$this->input->post("description"),
+								"skill_title"=>$this->input->post("title"),
+								"skill_subtitle"=>$this->input->post("subtitle"));
+					$result=$this->Admin_model->skill_edit($data,$sdetail_id);
+					if($result){
+						echo "Successful Editing Skill";
+					}else{
+						echo "Fail Editing Skill";
+					}
+				}elseif($uploadchoiceid=="2"){
+					//var_dump($uploadchoiceid);die();
+					$data=array("skill_id"=>$this->input->post("skillchoice"),
+								//"skill_image"=>$this->input->post("null"),
+								"skill_vdlink"=>$this->input->post("videouploadchoice"),
+								"skill_description"=>$this->input->post("description"),
+								"skill_title"=>$this->input->post("title"),
+								"skill_subtitle"=>$this->input->post("subtitle"));
+					//var_dump($data);die();
+
+					$result=$this->Admin_model->skill_edit($data,$sdetail_id);
+					if($result){
+						echo "Successful Editing Skill";
+					}else{
+						echo "Fail Editing Skill";
+					}
+				}
+			}
 		}
-		// function edit_opportunity($oppdetail_id)
-		// {
-		// 	$data['edit']=$this->Admin_model->oppdetail_get($oppdetail_id);
-		// 	// var_dump($data); die();
-		// 	$data['all_opp']=$this->Admin_model->opportunity();
-		// 	$data['all_skill']=$this->Admin_model->skill();
-		// 	$this->load->view('include/header');
-		// 	$this->load->view('admin/editopportunity_view',$data);
-		// 	$this->load->view('include/footer');
-		// }
-  //      function edit_skill($sdetail_id)
-  //      {
-		// 	$data['edit']=$this->Admin_model->skilldetail_get($sdetail_id);
-		// 	// var_dump($data); die();
-		// 	$data['all_opp']=$this->Admin_model->opportunity();
-		// 	$data['all_skill']=$this->Admin_model->skill();
-		// 	$this->load->view('include/header');
-		// 	$this->load->view('admin/editskill_view',$data);
-		// 	$this->load->view('include/footer');
-		// }
-// --------------------------
+		function delete_skill($sdetail_id){
+				$result=$this->Admin_model->skill_delete($sdetail_id);
+				if($result){
+					echo "Successful Deleting Skill";
+				}else{
+					echo "Fail Deleting Skill";
+				}
+		}
 	 }
 ?>

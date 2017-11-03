@@ -1,3 +1,32 @@
+<!-- ==========PAGE HEADER============ --> 
+<!-- HTN -->
+<div class="row"   style="background-color:#004167" style="position:fixed;" >
+<span  padding-top="5px">
+    <label class="col-md-3">
+        <img src="<?=base_url();?>/images/myeo_logo.png" style="padding-top:11px" width="71"  height="63" class='col-md-offset-2' />
+    </label>
+    <div class="col-md-offset-5" style="padding:20px;">
+            <a href="<?=base_url();?>Admin/upload"><font style="color:#fff">Upload Contents</font></a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="<?=base_url();?>Admin/get_oppdetail"><font style="color:#fff">Opportunities</font></a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="<?=base_url();?>Admin/get_skilldetail/"><font style="color:#fff">Skills</font></a> 
+
+            <ol class="dropdown pull-right">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?=base_url();?>images/pp.png"></span><b class="caret"></b></a>
+                <ul class="dropdown-menu" style="background-color:#CCC">
+                    <div class="col-md-4">
+                        <img src="<?=base_url();?>logo.png">
+                    </div>
+                    <div class="col-md-offset-1">
+                        <label>Hsu Thinzar Nyi</label>
+                        <a href="<?=base_url();?>profile/" class="btn" style="background-color: #004167"> <font color="#fff">Edit Your Profile </font></a>
+                    </div>
+                </ul>
+            </ol>
+        </div>
+ </span>
+
+</div><!-- End Of Page Header -->
+<!-- HTN -->
 
 <!-- ===========BODY============ -->
 
@@ -78,17 +107,12 @@
                 </div>
             </ul>
         </div>
-        
         <div class="form-group">
             <ul class="form-group" id="video">
-        <div class="form-group collapse col-md-offset-1 " id="vedio">
-            <label class="input col-md-5 control-label">Fill Vedio Link : </label>
-             <div class="input-placeholder col-md-5"><input type="text" required name="vediouploadchoice" class="form-control">
-                  <div class="placeholder" style="margin-left: 11px">
-                      <span>*</span> <font color="grey">paste_vedio_link</font>
-                  </div>
-            </div>
-        </div>
+                <label class="col-md-5 control-label">Fill Vedio Link : </label>
+                <div class="col-md-5">
+                    <input type="text" name="videouploadchoice" placeholder="*paste_video_link" class="form-control">
+                </div>
             </ul>
         </div>
        <!--  </div> -->

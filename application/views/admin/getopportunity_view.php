@@ -7,7 +7,7 @@
         </label>
         <div class="col-md-offset-5" style="padding:20px;">
             <a href="<?=base_url();?>Admin/upload"><font style="color:#fff">Upload Contents</font></a> &nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="<?=base_url();?>Admin/get_oppdetail"><font style="color:#fff">Opportunity</font></a> &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="<?=base_url();?>Admin/get_oppdetail"><font style="color:#fff">Opportunities</font></a> &nbsp;&nbsp;&nbsp;&nbsp;
             <a href="<?=base_url();?>Admin/get_skilldetail"><font style="color:#fff">Skills</font></a> 
 
              <ol class="dropdown pull-right" style="margin-right: 25px"> 
@@ -51,9 +51,9 @@
                     <td><?=$row['opp_subtitle']?></td>
                     <td>
                         <a href="<?=base_url()?>Admin/edit_opportunity/<?=$row['oppdetail_id'];?>" 
-                        class="btn btn-warning" name="edit"> Edit </a>
+                        class="btn btn-warning col-md-offset-1 col-md-4" name="edit"> Edit </a> 
                         <a href="<?=base_url()?>Admin/delete_opportunity/<?=$row['oppdetail_id'];?>"
-                        class="btn btn-warning" name="delete"> Delete </a>
+                        class="btn btn-warning col-md-offset-1 col-md-5" name="delete" onclick="return confirm('Are you sure to delete opportunity?');"> Delete </a>
                     </td>
                 </tr>  
                 <?php $count++; };?>

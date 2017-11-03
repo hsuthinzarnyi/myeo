@@ -21,6 +21,7 @@ class User extends CI_Controller
     $this->load->library('ckfinder');
     $this->load->helper('security');
     $this->load->library('encrypt');
+     $this->load->library('pagination');
 
   }
   function index()
@@ -297,6 +298,7 @@ class User extends CI_Controller
             $this->load->view('include/nav',$result);
             $data['oppo']  = $this->Opportunity_model->getall();
             $data ['skill'] = $this->Skill_model->getall();
+
             $this->load->view('home/left_view',$data);
             $this->load->view('home/custom_view',$data);
             $this->load->view('include/footer');

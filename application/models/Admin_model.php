@@ -41,6 +41,11 @@
 			$result=$this->db->update('opp_detail',$data); //to check with values alreay added
 			return $result;
 		}
+		function opportunity_delete($oppdetail_id){
+			$this->db->where('oppdetail_id',$oppdetail_id);
+			$result=$this->db->delete('opp_detail');
+			return $result;
+		}
 		function skilldetail_getall(){
 			$this->load->database();
 			$query=$this->db->get("skill_detail");
@@ -53,6 +58,16 @@
 		function skill(){
 			$all_skill=$this->db->get('skill');
 			return $all_skill->result();
+		}
+		function skill_edit($data,$skilldetail_id){
+			$this->db->where('sdetail_id',$skilldetail_id);
+			$result=$this->db->update('skill_detail',$data); //to check with values alreay added
+			return $result;
+		}
+		function skill_delete($sdetail_id){
+			$this->db->where('sdetail_id',$sdetail_id);
+			$result=$this->db->delete('skill_detail');
+			return $result;
 		}
 	}
 ?>
