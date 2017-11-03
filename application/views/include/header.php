@@ -2,26 +2,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
+
   <title></title>
     <meta name="viewport" content="width=device-width,initital-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/css/bootstrap.min.css">
     <script type="text/javascript" src="<?php echo base_url();?>template/js/jquery.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>template/js/bootstrap.min.js"></script>
-=======
+
 	<title></title>
 	  <meta name="viewport" content="width=device-width,initital-scale=1.0">
 	  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/css/bootstrap.min.css">
 	  <script type="text/javascript" src="<?php echo base_url();?>template/js/jquery.js"></script>
 	  <script type="text/javascript" src="<?php echo base_url();?>template/js/bootstrap.min.js"></script>
->>>>>>> master
+
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/css/jquery.dataTables.css">
     <script src = "<?php echo base_url();?>jquery.com/jquery-1.10.2.js"></script>
     <script src = "<?php echo base_url();?>jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>asset/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>asset/ckfinder/ckfinder.js"></script>
-<<<<<<< HEAD
-=======
+
      <script src="<?php echo base_url();?>template/js/jquery.localScroll.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>template/js/jquery.scrollTo.min.js" type="text/javascript"></script> 
 <script src="<?php echo base_url();?>script.js"></script>
@@ -145,11 +144,10 @@ $(function(){
      color: #CCC;}
 
 /*.row .nav a:visited{color: #85EC14;}*/
-<<<<<<< HEAD
-=======
+
 
 .row .nav a:active{color: #85EC14;}
->>>>>>> master
+
 
 /*a:focus{
   font-style: italic;

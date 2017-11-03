@@ -1,5 +1,6 @@
 <!-- ==========PAGE HEADER============ --> 
 <!-- HTN -->
+
 <div class="row"   style="background-color:#004167" style="position:fixed;" >
 <span  padding-top="5px">
     <label class="col-md-3">
@@ -126,7 +127,7 @@
 </form> <!-- END OF FORM -->
 </div> <!-- END OF FIRST DIV -->
                                  <!--FOR NAV-->
-<div class="row" style="background-color: #004167;width:102%;position:fixed;top:0;">
+<!-- <div class="row" style="background-color: #004167;width:102%;position:fixed;top:0;">
    
     <span class="label_tag"> 
         <label class="col-md-3">
@@ -151,4 +152,4 @@
             </ol>
         </div>
    </span>
-</div> 
+</div>  -->

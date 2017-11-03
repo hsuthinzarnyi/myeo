@@ -57,28 +57,8 @@ class User extends CI_Controller
        $name=$this->input->post('name');
        $email=$this->input->post('email');
        $password=sha1($this->input->post('password'));
-       $cfmpassword=sha1($this->input->post('cfpassword'));
-<<<<<<< HEAD
-      
-    if($password==$cfmpassword)
-    {
-       $result=$this->User_model->check($name,$email,$password);
-        var_dump($result);die();
-       if($result!=NULL)
-       {
-           $this->load->view('user/error');
-        
-       }
-       else
-       {
-        var_dump('err');
-         $this->User_model->signup($name,$email,$password);
-         var_dump($result);die();
-         $this->load->view('user/signup');
-       }
-      
-=======
-        var_dump($name,$email,$password,$cfmpassword);die();
+       $cfmpassword=sha1($this->input->post('cfmpassword'));
+      // var_dump($name);die();
     if($password==$cfmpassword)
     {
        $result=$this->User_model->check($name,$email,$password);
@@ -106,19 +86,6 @@ class User extends CI_Controller
    }
  }
 }
-  function check_name($name)
-  {
-    if(preg_match('/^[a-zA-Z_\s]+$/', $name))
-    {     
-      return $name;
->>>>>>> master
-    }
-    else
-    {
-      $this->form_validation->set_message('check_name','Only letter and space allowed');
-      return FALSE;
-    }
-  }
   function check_name($name)
   {
     if(preg_match('/^[a-zA-Z_\s]+$/', $name))
@@ -174,9 +141,7 @@ class User extends CI_Controller
             $this->form_validation->set_rules('uploadchoice','UploadChoice','required');
             if($this->form_validation->run()==FALSE)
             {
-              $this->load->view('include/header');
-              $this->load->view('admin/upload_view');
-              $this->load->view('include/footer');
+              redirect('admin');
             }
             else
             {

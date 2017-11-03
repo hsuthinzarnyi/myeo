@@ -440,8 +440,8 @@ body{
               </div>
               <div class="form-group">
                 <label for="password">Confirm Password</label>
-                <input type="password" class="form-control" name="cfpassword" style="background-color:transparent;color: white;" placeholder="Password" required="required">
->>>>>>> master
+                <input type="password" class="form-control" name="cfmpassword" style="background-color:transparent" required>
+                
               </div>
               <center><button type="submit" class="btn btn-default" style="padding-bottom:10px;">SIGN UP</button></center><br/>
               <div align="right"><a href="#" class="signup" style="padding-bottom:20px; text-decoration: none;color: #fff;margin-bottom: 20px;">Forgot password?</a></div>
