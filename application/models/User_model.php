@@ -53,6 +53,7 @@ class User_model extends CI_Model
     $this->db->from('user');
     $this->db->where('email',$email);
     $data=$this->db->get();
+    // var_dump($data->row());die();
     return $data->row();
   }
  
