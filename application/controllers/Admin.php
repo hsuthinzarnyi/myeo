@@ -262,12 +262,29 @@
 			}else{ //no filled condition for two upload choice 
 				$uploadchoiceid=$this->input->post("uploadchoice");
 				if($uploadchoiceid=="1"){
-					$data=array("skill_id"=>$this->input->post("skillchoice"),
-								"skill_image"=>$this->input->post("imageuploadchoice"),
-								// "skill_vdlink"=>$this->input->post("null"),
-								"skill_description"=>$this->input->post("description"),
-								"skill_title"=>$this->input->post("title"),
-								"skill_subtitle"=>$this->input->post("subtitle"));
+
+					$skill_id=$this->input->post("skillchoice");
+					$skill_image=$this->input->post("imageuploadchoice");
+					$skill_image1=$this->input->post("imageuploadchoice1");
+					$skill_description=$this->iput->post("description");
+					$skill_title=$this->input->post("title");
+					$skill_subtitle=$this->input->post("subtitle");
+					
+					if($skill_image==NULL)
+					{
+						$skill_img=$skill_image1;
+					  
+					}
+					else
+					{
+						$skill_img=$skill_image;
+					}
+					// var_dump($opp_img);die();
+					$data=array("skill_id"=>$skill_id,
+								"skill_image"=>$skill_img,
+								"skill_description"=>$skill_description,
+								"skill_title"=>$skill_title,
+								"skill_subtitle"=>$skill_subtitle);
 					$result=$this->Admin_model->skill_edit($data,$sdetail_id);
 					if($result){
 						echo "Successful Editing Skill";
