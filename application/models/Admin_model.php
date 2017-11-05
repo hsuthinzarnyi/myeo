@@ -52,7 +52,7 @@
 			return $query->result_array();
 		}
 		function skilldetail_get($sdetail_id){
-			$query=$this->db->get_where('skill_detail',array('sdetail_id'));
+			$query=$this->db->get_where('skill_detail',array('sdetail_id'=>$sdetail_id));
 			return $query->row();
 		}
 		function skill(){
