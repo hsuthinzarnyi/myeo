@@ -373,7 +373,7 @@ body{
         
         <input type="email"  class="form-control " name="email" placeholder="Email" required>
         
-        <input type="text" class="form-control " name="password" placeholder="Password" required>
+        <input type="password" class="form-control " name="password" placeholder="Password" required>
         
         <input type="submit" class="btn btn " name="submit" value="LOG IN" 
                style="color:white;background-color:transparent;border-color:white;height:30px;border-radius:10px;">

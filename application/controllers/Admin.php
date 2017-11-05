@@ -73,7 +73,8 @@
 								//var_dump($data);die();
 								$result=$this->Admin_model->opportunity_upload($data);
 								if($result){
-									echo "Successful Uploading Opportunity";
+									// echo "Successful Uploading Opportunity";
+									redirect('admin/get_oppdetail');
 								}else{
 									echo "Fail Uploading Opportunity";
 								}
@@ -124,7 +125,8 @@
 								//var_dump($data);die();
 								$result=$this->Admin_model->skill_upload($data);
 								if($result){
-									echo "Successful Uploading Skill";
+									// echo "Successful Uploading Skill";
+									redirect('admin/get_skilldetail');
 								}else{
 									echo "Fail Uploading Skill";
 								}
