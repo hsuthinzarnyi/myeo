@@ -25,18 +25,22 @@ class User extends CI_Controller
 
 
   }
+
+
   function index()
   {
        
     $this->load->view('home/login_page');
   }
-       
+
+  
   function signup()
   {
      $log=$this->session->userdata('logged_in');
        // var_dump($log);die();
     if(isset($log))
     {
+      redirect('admin/upload');
       // var_dump("Hello");die();
       if($log['email']=='koko@gmail.com' && $log['username']=='koko')
       {
