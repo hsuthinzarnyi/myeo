@@ -1,4 +1,4 @@
- <?php
+<?php
 $config['pagination'] = array();
 $config['pagination']['per_page'] = 3;
 $config['pagination']['num_links'] = 3;

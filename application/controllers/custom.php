@@ -19,7 +19,8 @@ class Custom extends CI_Controller
 	}
 
 	function index()
-	{ 
+	{
+
 		$log=$this->session->userdata('logged_in');
            // var_dump($log);die();
 			    if(isset($log))
@@ -92,15 +93,23 @@ class Custom extends CI_Controller
 			    }	
 		
 	}
+
+
+
 	function search()
 	{
+
 		$log=$this->session->userdata('logged_in');
+
            // var_dump($log);die();
+
 			    if(isset($log))
 			    {
 			      // var_dump("Hello");die();
+
 			      if($log['email']!='koko@gmail.com' && $log['username']!='koko')
 			      {
+
 			            $this->form_validation->set_rules('search','Search','required');
       if($this->form_validation->run()==FALSE)
       {
@@ -189,6 +198,7 @@ class Custom extends CI_Controller
 			    }
       
     }
+
 }
-?>
-<!--HTZN-->
+
+

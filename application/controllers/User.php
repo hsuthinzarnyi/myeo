@@ -1,4 +1,4 @@
- <?php
+<?php
 /**
 * 
 */
@@ -8,7 +8,9 @@ class User extends CI_Controller
   
   function __construct()
   {
+
     parent::__construct();
+
     $this->load->model('User_model','',TRUE);
     $this->load->library('form_validation');
     $this->load->model('Admin_model','',TRUE);
