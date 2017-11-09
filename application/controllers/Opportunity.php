@@ -23,78 +23,81 @@ class Opportunity extends CI_Controller
 
 	function index()
 	{
-	 $pag = $this->config->item('pagination');   
-    $pag['base_url'] = base_url().'Opportunity/index';
-    $data['search']=Null;
-    $pag['total_rows'] = $this->Sample_model->count_opp();
-    $this->db->order_by("opp_id",'asc');
-    $data['oppo'] = $this->Sample_model->get_opp($pag['per_page'],$this->uri->segment(3),'desc');
-    $data['pag'] = $pag;
-    // var_dump($data)    ;die();
-    $this->load->view('include/header');
-    $this->load->view('home/opp_search');
-    $data1['oppo']  = $this->Opportunity_model->left_all();
-    $this->load->view('home/opp_left',$data1);
-    $this->load->view('home/opportunity_view',$data);
-    $this->load->view('include/footer');
-    
-
-    // $log=$this->session->userdata('logged_in');
-    // if($log==NULL)
-    // {
-  //   $this->load->view('include/header');
-		// // $this->load->view('include/nav');
-  //   $this->load->view('home/opp_search');
-		// $data['oppo']  = $this->Opportunity_model->getall();
-		// $this->load->view('home/opp_left',$data);
-		// $this->load->view('home/opportunity_view',$data);
-		// $this->load->view('include/footer');
-    	// }
-    	// else
-    	// {
-    		// redirect('user/login');
-    	// }
+     $log=$this->session->userdata('logged_in');
+           // var_dump($log);die();
+          if(isset($log))
+          {
+            // var_dump("Hello");die();
+            if($log['email']!='koko@gmail.com' && $log['username']!='koko')
+            {
+                  $pag = $this->config->item('pagination');   
+                  $pag['base_url'] = base_url().'Opportunity/index';
+                  $data['search']=Null;
+                  $pag['total_rows'] = $this->Sample_model->count_opp();
+                  $this->db->order_by("opp_id",'asc');
+                  $data['oppo'] = $this->Sample_model->get_opp($pag['per_page'],$this->uri->segment(3),'desc');
+                  $data['pag'] = $pag;
+                  // var_dump($data)    ;die();
+                  $this->load->view('include/header');
+                  $this->load->view('home/opp_search');
+                  $data1['oppo']  = $this->Opportunity_model->left_all();
+                  $this->load->view('home/opp_left',$data1);
+                  $this->load->view('home/opportunity_view',$data);
+                  $this->load->view('include/footer');     
+            }
+            else
+            {
+              redirect('user/login');
+            }
+            
+          }
+	 
     	
 	}
 	function oppdetail($opp_id)
 	{
-		// $log_session = $this->session->userdata('logged_in');
-       // var_dump($log_session);die();
-       // if($log_session)
-       // {
-       //  $this->load->view('include/header');
-       //  $this->load->view('include/nav');
-       //  $this->load->view('user/opportunity_view');
+     $log=$this->session->userdata('logged_in');
+           // var_dump($log);die();
+          if(isset($log))
+          {
+            // var_dump("Hello");die();
+            if($log['email']!='koko@gmail.com' && $log['username']!='koko')
+            {
+                  $pag = $this->config->item('pagination');   
+                  $pag['base_url'] = base_url().'Opportunity/oppdetail';
+                  $data['search']=Null;
+                  $pag['total_rows'] = $this->Sample_model->count_opp();
+                  // $this->db->order_by("opp_id",'asc');
+                  // $data['oppo'] = $this->Sample_model->get_opp($pag['per_page'],$this->uri->segment(3),'desc');
+                  $data['pag'] = $pag;
 
-       // }
-       // else{
-       //  redirect('login');
-       // }
-    $pag = $this->config->item('pagination');   
-    $pag['base_url'] = base_url().'Opportunity/oppdetail';
-    $data['search']=Null;
-    $pag['total_rows'] = $this->Sample_model->count_opp();
-    // $this->db->order_by("opp_id",'asc');
-    // $data['oppo'] = $this->Sample_model->get_opp($pag['per_page'],$this->uri->segment(3),'desc');
-    $data['pag'] = $pag;
-
-		$data1['oppo']  = $this->Opportunity_model->getall();
-		$data['oppo']  = $this->Opportunity_model->oppdetail($opp_id);
-		$this->load->view('include/header');
-		$this->load->view('home/opp_search');
-		$this->load->view('home/opp_left',$data1);
-		$this->load->view('home/opportunity_view',$data);
-		$this->load->view('include/footer');
+                  $data1['oppo']  = $this->Opportunity_model->getall();
+                  $data['oppo']  = $this->Opportunity_model->oppdetail($opp_id);
+                  $this->load->view('include/header');
+                  $this->load->view('home/opp_search');
+                  $this->load->view('home/opp_left',$data1);
+                  $this->load->view('home/opportunity_view',$data);
+                  $this->load->view('include/footer');
+            }
+            else
+            {
+              redirect('user/login');
+            }
+            
+          }
+		
+    
 	}
 	function search()
 	{
-		// if(isset($_SESSION['logged_in']))
-  //     $log_session=$this->session->has_userdata('logged_in');
-  //   if($log_session)
-  //   {
-  //     redirect('login');
-  //   }
-      $this->form_validation->set_rules('search','Search','required|xss_clean|required');
+		$log=$this->session->userdata('logged_in');
+           // var_dump($log);die();
+          if(isset($log))
+          {
+            // var_dump("Hello");die();
+            if($log['email']!='koko@gmail.com' && $log['username']!='koko')
+            {
+                  $this->form_validation->set_rules('search','Search','required|xss_clean|required');
       if($this->form_validation->run()==FALSE)
       {
        $pag = $this->config->item('pagination');   
@@ -104,16 +107,16 @@ class Opportunity extends CI_Controller
         // $this->db->order_by("opp_id",'asc');
         $data['oppo'] = $this->Opportunity_model->search($pag['per_page'],$this->uri->segment(3),'desc');
         $data['pag'] = $pag;
-		    $data1['oppo']  = $this->Opportunity_model->left_all();
-      	$this->load->view('include/header');
-      	$this->load->view('home/opp_search');
-		    $this->load->view('home/opp_left',$data1);
-      	$this->load->view('home/opportunity_view',$data);
-      	$this->load->view('include/footer'); 
+        $data1['oppo']  = $this->Opportunity_model->left_all();
+        $this->load->view('include/header');
+        $this->load->view('home/opp_search');
+        $this->load->view('home/opp_left',$data1);
+        $this->load->view('home/opportunity_view',$data);
+        $this->load->view('include/footer'); 
       }
       else
       {
-      	$search = $this->input->post('search'); 
+        $search = $this->input->post('search'); 
         if ($search) 
         {
              $check = $this->Opportunity_model->check($search);
@@ -156,8 +159,16 @@ class Opportunity extends CI_Controller
                 $this->load->view('include/footer');
              }
         }
-		   	
+        
       }
+            }
+            else
+            {
+              redirect('user/login');
+            }
+            
+          }
+      
   }
 }
 ?><!--HTZN-->

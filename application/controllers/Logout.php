@@ -15,7 +15,7 @@ class Logout extends CI_Controller
 		$this->session->unset_userdata('logged_in');
 		$this->session->sess_destroy();
 		// var_dump($logged_in);die();
-		redirect('user/login');
+		redirect('user');
 
 	}
 }

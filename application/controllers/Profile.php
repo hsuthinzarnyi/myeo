@@ -92,7 +92,7 @@ class Profile extends CI_Controller
       $cv     = $this->pdf_upload();
       $letter = $this->pdf_upload1();
       $video  = $this->video_upload();
-      var_dump($name, $education, $location, $sentence,$UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition,$Communation, $Leadership, $Public, $Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship,'kkkk',$image,'<=img',$cv,$letter,'vd=>',$video);die();
+      var_dump($name, `$education, $location, $sentence,$UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition,$Communation, $Leadership, $Public, $Application,$Interview,$critical,$Creative,$Digital,$Cover,$Entrepreneurship,'kkkk',$image,'<=img',$cv,$letter,'vd=>',$video);die();
 
       $result = $this->Profile_model->create( $image, $cv, $letter, $video);
       $result2=$this->Profile_model->add($UG_scholar,$Master,$PHD,$Internship,$Conterence,$Training,$Jobs,$Competition);
@@ -211,7 +211,7 @@ class Profile extends CI_Controller
             // $this->load->view('/', $data);
                $data = array('upload_data' => $this->upload->data());
                         return $data['upload_data']['file_name'];
-        }
+        }`
 
     // }else{
     //     echo "Please select a file";

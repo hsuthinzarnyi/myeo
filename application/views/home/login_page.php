@@ -355,9 +355,17 @@ body{
 </head>
 <body >
   <!-- ===========PAGE HEADER=========== -->
+<?php if($this->session->flashdata('message')){ ?>
+
+  <?php   print "<script type=\"text/javascript\">alert('Your Email or Password do not match!!');</script>";?>
+
+     <?php }?>
 
 <div class="col-md-12">
+
 <div class="row pg_header"  style="background-color:#004167;" >
+
+
 <!-- <span class="label_tag"> -->
     <label class="col-md-3" id="navigations">
         <img src="<?=base_url();?>/images/myeo_logo.png"  width="71"  height="63" class='col-md-offset-2' />
@@ -375,21 +383,24 @@ body{
         
         <input type="password" class="form-control " name="password" placeholder="Password" required>
         
-        <input type="submit" class="btn btn " name="submit" value="LOG IN" 
+        <input type="submit" class="btn btn " id="log" name="submit" value="LOG IN" onclick="error()" 
                style="color:white;background-color:transparent;border-color:white;height:30px;border-radius:10px;">
         <a href="<?= base_url();?>#slideshow-container1" class="btn btn" id="navigations" style="color:white;background-color:transparent;border-color:white;height:30px;border-radius:10px;">SIGN UP</a>
        </div>
        
-       </form>
-       
+       </form>      
      
   </span>
 <!-- </span> -->
+
 </div>
+
 </div>
+
   <!-- Login Div -->
-  <div height="80px;" style="padding-top:68px">
-  <div  class="background" style="background-color:#06c3c3;" id="slideshow-container1">
+  <div height="80px;" style="padding-top:68px">   
+  <div  class="background"  id="slideshow-container1">
+      
     <ul style="padding-top:20px;">
       <h1 class="title-class" style="font-family:open-sans"><b>Develop your skills and</b></h1>
       <h1 class="title-class" style="font-family:open-sans;line-height: 1px"><b>discover your next opportunity</b></h1>
@@ -405,7 +416,7 @@ body{
             <p style="padding-top: 50px">
               <div class="with-facebook">
                 <img src="<?=base_url();?>images/100417_fb.png">
-                <a href="#" style="padding-top:20px;">Sign In With Facebook</a>
+                <a href="<?=base_url();?>user_authentication1" style="padding-top:20px;">Sign In With Facebook</a>
               </div>
              <!--  <div class="with-google-plus">
                 <img src="<?=base_url();?>images/100417_gplus.png">
@@ -450,9 +461,9 @@ body{
           <!-- </center> -->
         </div>  
       </div>
-    <!-- 
+    
      <div style="background:#A6CAE5;height:40px;"><center><h4 style="padding-top:10px;color:#fff;font-family:open-sans;"><b>FEATURED OPPORTUNITIES</b></h4></center></div>
-  </div> -->
+  </div>
 </div>
 
 <div class="slideshow-container">
@@ -621,7 +632,17 @@ function showSlides() {
     // end code from w3schools
 
 </script>
+
 </body>
 </html>
 
+<!--
+<?php if($this->session->flashdata('message')){ ?>
 
+      
+      <center><div class="alert alert-danger alert-dismissable" style="width:80%;margin-top:20px;"><center>
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true"style="color:#000000;">&times;</button>
+       <?=$this->session->flashdata('message')?></center>
+</div></center>
+
+     <?php }?>-->

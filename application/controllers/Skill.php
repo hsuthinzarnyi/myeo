@@ -19,62 +19,83 @@ class Skill extends CI_Controller
 
 	function index()
 	{
-	$pag = $this->config->item('pagination');   
-    $pag['base_url'] = base_url().'Skill/index';
-    $data['search']=Null;
-    $pag['total_rows'] = $this->Sample_model->count_skill();
-    $this->db->order_by("skill_id",'asc');
-    $data['skill'] = $this->Sample_model->get_skill($pag['per_page'],$this->uri->segment(3),'desc');
-    $data['pag'] = $pag;
-    // var_dump($data)    ;die();
-    $this->load->view('include/header');
-	$this->load->view('home/skilldetail_view');
-    $data1['skill']  = $this->Skill_model->left_all();
-	$this->load->view('home/skill_left',$data1);
-	$this->load->view('home/skill_view',$data);
-    $this->load->view('include/footer');
-		// if(isset($_SESSION['logged_in']))
-  //     $log_session=$this->session->has_userdata('logged_in');
-  //   if($log_session)
- // {
- //      redirect('');
- //    }	
-		// $this->load->view('include/header');
-		// $this->load->view('home/skilldetail_view');
-		// $data['skill']  = $this->Skill_model->getall();
-		// $this->load->view('home/skill_left',$data);
-		// $this->load->view('home/skill_view',$data);
-		// $this->load->view('include/footer');
+		$log=$this->session->userdata('logged_in');
+           // var_dump($log);die();
+			    if(isset($log))
+			    {
+			      // var_dump("Hello");die();
+			      if($log['email']!='koko@gmail.com' && $log['username']!='koko')
+			      {
+			            $pag = $this->config->item('pagination');   
+					    $pag['base_url'] = base_url().'Skill/index';
+					    $data['search']=Null;
+					    $pag['total_rows'] = $this->Sample_model->count_skill();
+					    $this->db->order_by("skill_id",'asc');
+					    $data['skill'] = $this->Sample_model->get_skill($pag['per_page'],$this->uri->segment(3),'desc');
+					    $data['pag'] = $pag;
+					    // var_dump($data)    ;die();
+					    $this->load->view('include/header');
+						$this->load->view('home/skilldetail_view');
+					    $data1['skill']  = $this->Skill_model->left_all();
+						$this->load->view('home/skill_left',$data1);
+						$this->load->view('home/skill_view',$data);
+					    $this->load->view('include/footer');
+								      }
+			      else
+			      {
+			        redirect('user/login');
+			      }
+			      
+			    }
+	
+	
 	}
 	
 	function skilldetail($skill_id)
 	{
-		// if(isset($_SESSION['logged_in']))
-  //     $log_session=$this->session->has_userdata('logged_in');
-  //   if($log_session)
-	    $pag = $this->config->item('pagination');   
-	    $pag['base_url'] = base_url().'Skill/skilldetail';
-	    $data1['search']=Null;
-	    $pag['total_rows'] = $this->Sample_model->count_skill();
-	    // $this->db->order_by($skill_id,'asc');
-	    $data1['skill'] = $this->Skill_model->skilldetail($skill_id);
-	    $data1['pag'] = $pag;
-		$this->load->view('include/header');
-		$this->load->view('home/skilldetail_view');
-		$data['skill']  = $this->Skill_model->getall();
-		// $data1['skill']  = $this->Skill_model->skilldetail($skill_id);
-		$this->load->view('home/skill_left',$data);
-		$this->load->view('home/skill_view',$data1);
-		$this->load->view('include/footer');
+		$log=$this->session->userdata('logged_in');
+           // var_dump($log);die();
+			    if(isset($log))
+			    {
+			      // var_dump("Hello");die();
+			      if($log['email']!='koko@gmail.com' && $log['username']!='koko')
+			      {
+			            $pag = $this->config->item('pagination');   
+					    $pag['base_url'] = base_url().'Skill/skilldetail';
+					    $data1['search']=Null;
+					    $pag['total_rows'] = $this->Sample_model->count_skill();
+					    // $this->db->order_by($skill_id,'asc');
+					    $data1['skill'] = $this->Skill_model->skilldetail($skill_id);
+					    $data1['pag'] = $pag;
+						$this->load->view('include/header');
+						$this->load->view('home/skilldetail_view');
+						$data['skill']  = $this->Skill_model->getall();
+						// $data1['skill']  = $this->Skill_model->skilldetail($skill_id);
+						$this->load->view('home/skill_left',$data);
+						$this->load->view('home/skill_view',$data1);
+						$this->load->view('include/footer');
+			      }
+			      else
+			      {
+			        redirect('user/login');
+			      }
+			      
+			    }
+		
+	    
 	}
 	
 	function search1()
 	{
-		// if(isset($_SESSION['logged_in']))
-  //     $log_session=$this->session->has_userdata('logged_in');
-  //   if($log_session)
-   
-      $this->form_validation->set_rules('search','Search','required');
+		
+      $log=$this->session->userdata('logged_in');
+           // var_dump($log);die();
+			    if(isset($log))
+			    {
+			      // var_dump("Hello");die();
+			      if($log['email']!='koko@gmail.com' && $log['username']!='koko')
+			      {
+			            $this->form_validation->set_rules('search','Search','required');
       if($this->form_validation->run()==FALSE)
       {
       	$pag = $this->config->item('pagination');   
@@ -141,6 +162,14 @@ class Skill extends CI_Controller
         }
       	
       }
-  }
+			      }
+			      else
+			      {
+			        redirect('user/login');
+			      }
+			      
+			    }
+      
+    }
 }
 ?><!--HTZN-->

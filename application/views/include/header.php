@@ -2,31 +2,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-
   <title></title>
     <meta name="viewport" content="width=device-width,initital-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/css/bootstrap.min.css">
     <script type="text/javascript" src="<?php echo base_url();?>template/js/jquery.js"></script>
+    <script type="text/javascript" src="<?php echo base_url();?>template/js/jquery.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>template/js/bootstrap.min.js"></script>
-
-	<title></title>
-	  <meta name="viewport" content="width=device-width,initital-scale=1.0">
-	  <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/css/bootstrap.min.css">
-	  <script type="text/javascript" src="<?php echo base_url();?>template/js/jquery.js"></script>
-	  <script type="text/javascript" src="<?php echo base_url();?>template/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/css/jquery.dataTables.css">
+     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>template/css/jquery.dataTables.css">
+   <script type="text/javascript" src="<?php echo base_url();?>template/js/jquery.dtaTables.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>template/js/jquery.dataTables.min.js"></script>
+
     <script src = "<?php echo base_url();?>jquery.com/jquery-1.10.2.js"></script>
     <script src = "<?php echo base_url();?>jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>asset/ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>asset/ckfinder/ckfinder.js"></script>
-
      <script src="<?php echo base_url();?>template/js/jquery.localScroll.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>template/js/jquery.scrollTo.min.js" type="text/javascript"></script> 
 <script src="<?php echo base_url();?>script.js"></script>
 
-  
+<script>  
+$( document ).ready(function() {
+ $('#showopportunity').DataTable({
+ 
+        });   
+});
+</script>
+
+<script> 
+$(document).ready(function(){
+   
+      $("#btnbtn1").click(function(){
+        $("#opp").animate({
+            height: 'toggle'
+        });
+    });
+
+         $("#btnbtn2").click(function(){
+          $("#skill").animate({
+            height: 'toggle'
+        });
+    });
+
+      
+});
+</script>
+
+<script>
+$(document).ready(function(){
+    $("btnbtn1").click(function(){
+        $("#opp").show();
+        $("#skill").hide()
+    });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("btnbtn2").click(function(){
+        $('#skill').show();
+        $("#opp").hide();
+    });
+});
+</script>
+
 <script type="text/javascript">
    $(function(){
       $("#btnclick").click(function(){
@@ -44,6 +83,7 @@
       });
    })
 </script>
+
 
 <script type="text/javascript">
 $(function(){
@@ -134,17 +174,20 @@ $(function(){
  } 
 
 #whathere a:hover,#otherstuff a:hover{
-      color:  #85EC14;
+      color:  #4a4a4a;
 }
 
 #whathere a ,#otherstuff a{
      color: #CCC;}
 
+#opp a, #skill a{text-decoration:none;line-height: 30px;font-size: 12px;color: #9b9b9b}
+#opp a:hover,#skill a:hover{color: #4a4a4a}
+#opp a:focus,#skill a:active{color: #4a4a4a}
 /*.row .nav a:visited{color: #85EC14;}*/
 
-
-.row .nav a:active{color: #85EC14;}
-
+/*.row a:focus{color: #85EC14;
+font-style: italic;
+background-color: red;}*/
 
 /*a:focus{
   font-style: italic;
@@ -163,17 +206,27 @@ $(function(){
   text-decoration: none;
   /*cursor: not-allowed;*/
 }
-
+/*a[tabindex]:visited{color:red;}*/
 .row1 .left a
 {
   /*height: 800px;*/
   /*width: 20%;*/
   /*float: left;*/
 }
-.link:hover{color: #85EC14;}
+.qq a{text-decoration:none;line-height: 30px;font-size: 13px;}
+.row1 .left .qq a{color: #9b9b9b;}
+.row1 .left .qq a:hover{color: #4a4a4a;}
+/*.row1 .left .qq sssss{color: red}*/
+.nav .row .col-md-offset-4 a:hover{color: #85EC14;}
+.nav .row .col-md-offset-4 a{color: white;}
+.nav .row .col-md-offset-4 a[tabindex]:link{color: green;
+                                            outline: none;}
+/*.row1 .left .qq a:visited{color: #4a4a4a;}*/
 /*=============END of ANCHOR LINK STYLE==========*/
 .font{font-style:;}
 
+
+.well label,p{color: #4a4a4a}
 /*=================FOOTER ====================*/
 
 .page_footer{position: relative; 
@@ -209,10 +262,7 @@ $(function(){
   background-origin: 0;
   max-height: 200px;
 }
-/*.rspace
-{
-  text-align: right;
-}*/
+
 .form-inline
 {
   padding-right: 20px;
@@ -221,7 +271,8 @@ $(function(){
 
 .row1 .right
 {
-    width: 75%;
+  margin-top: 0px;
+    width: 80%;
     float: right;
     background-color:#F0f0f0;
 }
@@ -337,31 +388,81 @@ position: fixed;}*/
 }
 
 
-/*.card p {
-  min-height: 0;
-}*/
-
-/*.card {
-  background: #fff;
-  /*box-shadow: 0 32px 44px -24px rgba(0, 0, 0, 0.23), 0 20px 25px 0px rgba(0, 0, 0, 0.12), 0 15px 10px -10px rgba(0, 0, 0, 0.2);*/
-  border-radius: 6px;
-  margin-bottom: 30px;
-  -webkit-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
-  -moz-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
-  -o-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
-  -ms-transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
-  transition: all 370ms cubic-bezier(0.34, 1.61, 0.7, 1);
-}*/
-/*.card:not(.card-plain):not(.card-price):hover {
-  -webkit-transform: scale(1.02);
-  -moz-transform: scale(1.2);
-  -o-transform: scale(1.05);
-  -ms-transform: scale(1.03);
-  transform: scale(1.3);
-  box-shadow: 0 26px 50px -10px rgba(0, 0, 0, 0.38), 0 10px 20px 0px rgba(0, 0, 0, 0.2), 0 15px 10px -10px rgba(0, 0, 0, 0.2);
-}*/
-
 .aa{color: #000;}
+
+.checkbox {
+    /*margin: 50px auto;*/
+    position: relative;
+    display: block;
+    width: 200px;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    opacity: 0.00000001;
+    position: absolute;
+    left: 0;
+    margin-left: -20px;
+}
+.helper {
+    position: absolute;
+    top: 2px;  /* box distance*/
+    left: -3px;
+    cursor: pointer;
+    /*display: block;*/
+    /*font-size: 4px;*/
+    /*user-select: none;*/
+    /*color: #e7e7e7;*/
+}
+.helper:before {
+    content: '';
+    position: absolute;
+    /*left: 0;*/
+    /*top: 0;*/
+    margin: 4px;
+    width: 15px;
+    height: 15px;
+    /*transition: transform 0.28s ease;*/
+    /*border-radius: 3px;*/
+    border: 1px solid #9b9b9b;
+}
+.helper:after {
+  content: '';
+    display: block;
+    width: 10px;
+    height: 5px;
+    border-bottom: 3px solid #7bbe72;
+    border-left: 2px solid #7bbe72;
+    -webkit-transform: rotate(-45deg) scale(0);
+    -moz-transform: rotate(-45deg) scale(0);
+    -ms-transform: rotate(-45deg) scale(0);
+    transform: rotate(-45deg) scale(0);
+    position: absolute;
+    top: 10px;
+    left: 6px;
+}
+input[type="checkbox"]:checked ~ .helper::before {
+    color: #7bbe72;
+}
+
+input[type="checkbox"]:checked ~ .helper::after {
+    -webkit-transform: rotate(-45deg) scale(1);
+    -moz-transform: rotate(-45deg) scale(1);
+    -ms-transform: rotate(-45deg) scale(1);
+    transform: rotate(-45deg) scale(1);
+}
+
+.checkbox label {
+    min-height: 2px;
+    /*padding-left: 3px;*/
+    margin-bottom: 0;
+    /*font-weight: normal;*/
+    /*cursor: pointer;*/
+    vertical-align: sub;
+}
+/*input[type="checkbox"]:focus + label::before {*/
+    outline: #000 auto 5px;
+}
 </style>
 <!--HTZN-->
 <script type="text/javascript">
@@ -383,12 +484,7 @@ function showOne(showme) {
 }
 </script>
 
-<script>
-#home.onclick = function() {
-  this.style.fontSize = '36px';
-  this.style.color = 'red';
-};
-</script>
+
 
 <script language="JavaScript" type="text/javascript"> 
 
@@ -396,7 +492,6 @@ function showOne(showme) {
    var fileinput = document.getElementById("browse");
    fileinput.click();
   }
-
    function Handlechange() {
     var fileinput = document.getElementById("browse");
     var textinput = document.getElementById("upload");
@@ -404,21 +499,60 @@ function showOne(showme) {
 </script>
 
 
+<script language="JavaScript" type="text/javascript"> 
+
+   function HandleBrowseClick1() { 
+   var fileinput = document.getElementById("browse1");
+   fileinput.click();
+  }
+   function Handlechange1() {
+    var fileinput = document.getElementById("browse1");
+    var textinput = document.getElementById("upload");
+    textinput.value = fileinput.value; }
+</script>
+
+
+<script language="JavaScript" type="text/javascript"> 
+
+   function HandleBrowseClick2() { 
+   var fileinput = document.getElementById("browse2");
+   fileinput.click();
+  }
+   function Handlechange2() {
+    var fileinput = document.getElementById("browse2");
+    var textinput = document.getElementById("upload");
+    textinput.value = fileinput.value; }
+</script>
+
+
+<script language="JavaScript" type="text/javascript"> 
+
+   function HandleBrowseClick3() { 
+   var fileinput = document.getElementById("browse3");
+   fileinput.click();
+  }
+   function Handlechange3() {
+    var fileinput = document.getElementById("browse3");
+    var textinput = document.getElementById("upload");
+    textinput.value = fileinput.value; }
+</script>
+
+
 <script type="text/javascript">
-$('.palceholder').click(function() {
-  $(this).siblings('input').focus();
-});
-$('.form-control').focus(function() {
-  $(this).siblings('.palceholder').hide();
-});
-$('.form-control').blur(function() {
-  var $this = $(this);
-  if ($this.val().length == 0)
-    $(this).siblings('.palceholder').show();
-});
-$('.form-control').blur();
+// $('.palceholder').click(function() {
+//   $(this).siblings('input').focus();
+// });
+// $('.form-control').focus(function() {
+//   $(this).siblings('.palceholder').hide();
+// });
+// $('.form-control').blur(function() {
+//   var $this = $(this);
+//   if ($this.val().length == 0)
+//     $(this).siblings('.palceholder').show();
+// });
+// $('.form-control').blur();
 </script>
       
 </head>
-<body onload="closeall()" style="background-color:">
+<body onload="closeall()">
 <!--HTZN-->

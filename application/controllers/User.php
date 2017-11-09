@@ -21,29 +21,37 @@ class User extends CI_Controller
     $this->load->library('ckfinder');
     $this->load->helper('security');
     $this->load->library('encrypt');
-     $this->load->library('pagination');
+    $this->load->library('pagination');
+
 
   }
   function index()
   {
        
-    
+    $this->load->view('home/login_page');
   }
        
   function signup()
   {
-    $log=$this->session->userdata('logined_in');
-    
+     $log=$this->session->userdata('logged_in');
+       // var_dump($log);die();
     if(isset($log))
     {
-      redirect('admin/upload');
-    
+      // var_dump("Hello");die();
+      if($log['email']=='koko@gmail.com' && $log['username']=='koko')
+      {
+        redirect('admin');
+      }
+      else
+      {
+        redirect('custom');
+      }
       
     }
  else
  {
     // var_dump($log);die;
-    $this->form_validation->set_rules('name','Name','required');
+      $this->form_validation->set_rules('name','Name','required');
       $this->form_validation->set_rules('email','Email','required'); 
       $this->form_validation->set_rules('password','Password','required'); 
       $this->form_validation->set_rules('cfmpassword','Confirm Password','required'); 
@@ -74,9 +82,7 @@ class User extends CI_Controller
        else
        {
          $this->User_model->signup($name,$email,$password);
-         // var_dump($id);die();
-         // $sess_array=array('username'=>$name,'email'=>$email);
-          // $this->session->set_userdata('name',$name);
+         
          $this->session->set_userdata('email',$email);
          redirect('profile/create');
        }
@@ -86,26 +92,22 @@ class User extends CI_Controller
    }
  }
 }
-  function check_name($name)
-  {
-    if(preg_match('/^[a-zA-Z_\s]+$/', $name))
-    {     
-      return $name;
-    }
-    else
-    {
-      $this->form_validation->set_message('check_name','Only letter and space allowed');
-      return FALSE;
-    }
-  }
+  
   function login()
   {
-      $log=$this->session->userdata('logined_in');
-       
+      $log=$this->session->userdata('logged_in');
+       // var_dump($log);die();
     if(isset($log))
     {
-      var_dump("Hello");die();
-    
+      // var_dump("Hello");die();
+      if($log['email']=='koko@gmail.com' && $log['username']=='koko')
+      {
+        redirect('admin');
+      }
+      else
+      {
+        redirect('custom');
+      }
       
     }
  else
@@ -127,12 +129,17 @@ class User extends CI_Controller
             
           if($result==NULL)
           {
-            redirect('user/login');
+            $flash='<strong>Sorry!</strong> Your Email or Password do not match!!!';
+            $this->session->set_flashdata('message',$flash);
+            // $this->load->view('home/login_page');
+            // echo '<script>alert("Your Email or Password do not match!!!");</script>';
+            redirect('user','refresh');
           }
           else if($result['name']=='koko' && $result['email']='koko@gmail.com')
           { 
-             $sess_array=array('id'=>$result['user_id'],'username'=>$result['name'],'password'=>$result['password']);
-             $this->session->set_userdata('logged_in',$sess_array);
+             $sess_array=array('id'=>$result['user_id'],'username'=>$result['name'],
+                             'password'=>$result['password'],'email'=>$result['email']);
+             $this->session->set_userdata('logged_in',$sess_array);             
             
             $this->form_validation->set_rules('title','Title', 'trim|required');
             $this->form_validation->set_rules('subtitle','Subtitle','trim|required');
@@ -145,167 +152,17 @@ class User extends CI_Controller
             }
             else
             {
-
-              $choiceid=$this->input->post("choice"); //////FIRST_RADIO_CHOICE
-              if($choiceid=="1")
-              { 
-                //var_dump($choiceid);
-                //echo "Opp" +  $choiceid; 
-                $this->form_validation->set_rules('opportunitychoice','OpportunityChoice','required');
-                if($this->form_validation->run()==FALSE)
-                {
-                  $this->load->view('include/header');
-                  $this->load->view('admin/upload_view',$data); //maketoremainfilleddata
-                  $this->load->view('include/footer');
-                }
-                else
-                {
-                  $uploadchoiceid=$this->input->post("uploadchoice"); //////SECOND_RADIO_CHOICE
-                  if($uploadchoiceid == "1")
-                  {  
-                    $this->form_validation->set_rules('imageuploadchoice','ImageUploadChoice','required');
-                    if($this->form_validation->run()==FALSE)
-                    {
-                      $this->load->view('include/header');
-                      $this->load->view('admin/upload_view',$data);
-                      $this->load->view('include/footer');
-                    }
-                    else
-                    {
-                      $data=array("opp_id"=>$this->input->post("opportunitychoice"),
-                            "opp_image"=>$this->input->post("imageuploadchoice"),
-                            "opp_description"=>$this->input->post("description"),
-                            "opp_title"=>$this->input->post("title"),
-                            "opp_subtitle"=>$this->input->post("subtitle"));
-                      $result=$this->Admin_model->opportunity_upload($data);
-                      if($result)
-                      {
-                        // 
-                        redirect('admin/get_skilldetail');
-                      }
-                      else
-                      {
-                        echo "Fail Uploading Opportunity";
-                      }
-                    }
-                  }
-                  elseif($uploadchoiceid == "2")
-                  {
-                    $this->form_validation->set_rules('vediouploadchoice','VedioUploadChoice','required');
-                    if($this->form_validation->run()==FALSE)
-                    {
-                      $this->load->view('include/header');
-                      $this->load->view('admin/upload_view',$data);
-                      $this->load->view('include/footer');
-                    }
-                    else
-                    {
-                      $data=array("opp_id"=>$this->input->post("opportunitychoice"),
-                            "opp_vdlink"=>$this->input->post("vediouploadchoice"),
-                            "opp_description"=>$this->input->post("description"),
-                            "opp_title"=>$this->input->post("title"),
-                            "opp_subtitle"=>$this->input->post("subtitle"));
-                      $result=$this->Admin_model->opportunity_upload($data);
-                      if($result)
-                      {
-                        echo "Successful Uploading Opportunity";
-                      }
-                      else
-                      {
-                        echo "Fail Uploading Opportunity";
-                      }
-                    }
-                  }  //////END_OF_SECOND_RADIO_CHOICE
-                }
-              }else if($choiceid=="2")
-              { 
-                //var_dump($choiceid);
-                //echo "Skill"  + $choiceid;
-                $this->form_validation->set_rules('skillchoice','SkillChoice','required');
-                if($this->form_validation->run()==FALSE)
-                {
-                  $this->load->view('include/header');
-                  $this->load->view('admin/upload_view',$data); //maketoremainfilleddata
-                  $this->load->view('include/footer');
-                }
-                else
-                {
-                  $uploadchoiceid=$this->input->post("uploadchoice");
-                  if($uploadchoiceid == "1")
-                  {
-                    $this->form_validation->set_rules('imageuploadchoice','ImageUploadChoice','required');
-                    if($this->form_validation->run()==FALSE)
-                    {
-                      $this->load->view('include/header');
-                      $this->load->view('admin/upload_view',$data);
-                      $this->load->view('include/footer');
-                    }
-                    else
-                    {
-                      $data=array("skill_id"=>$this->input->post("skillchoice"),
-                            "skill_image"=>$this->input->post("imageuploadchoice"),
-                            "skill_description"=>$this->input->post("description"),
-                            "skill_title"=>$this->input->post("title"),
-                            "skill_subtitle"=>$this->input->post("subtitle"));
-                      $result=$this->Admin_model->skill_upload($data);
-                      if($result)
-                      {
-                        echo "Successful Uploading Skill";
-                      }else
-                      {
-                        echo "Fail Uploading Skill";
-                      }
-                    }
-                  }elseif($uploadchoiceid=="2")
-                  {
-                    $this->form_validation->set_rules('vediouploadchoice','VedioUploadChoice','required');
-                    if($this->form_validation->run()==FALSE)
-                    {
-                      $this->load->view('include/header');
-                      $this->load->view('admin/upload_view',$data);
-                      $this->load->view('include/footer');
-                    }
-                    else
-                    {
-                      $data=array("skill_id"=>$this->input->post("skillchoice"),
-                            "skill_vdlink"=>$this->input->post("vediouploadchoice"),
-                            "skill_description"=>$this->input->post("description"),
-                            "skill_title"=>$this->input->post("title"),
-                            "skill_subtitle"=>$this->input->post("subtitle"));
-                      $result=$this->Admin_model->skill_upload($data);
-                      if($result)
-                      {
-                        echo "Successful Uploading Skill";
-                      }
-                      else
-                      {
-                        echo "Fail Uploading Skill";
-                      }
-                    }
-                  }
-                }
-              }//////END_OF_FIRST_RADIO_CHOICE
+                   redirect('admin/upload');
+              
             } /////END_OF_FIRST_IF
 
           }
           else 
           {
-            // $sess_array=array('id'=>$result['user_id'],'username'=>$result['name'],'password'=>$result['password']);
-            //  $this->session->set_userdata('logged_in',$sess_array);
-            // $res['data']=$this->User_model->getuser($email);
-            // // var_dump($result['data']);die();
-            // $this->load->view('include/header');
-            // $this->load->view('include/nav',$res);
-            // $data['oppo']  = $this->Opportunity_model->getall();
-            // $data ['skill'] = $this->Skill_model->getall();
-
-            // $this->load->view('home/left_view',$data);
-            // $this->load->view('home/custom_view',$data);
-            // $this->load->view('include/footer');
-            // $this->load->view('include/header');
+            $sess_array=array('id'=>$result['user_id'],'username'=>$result['name'],
+                         'password'=>$result['password'],'email'=>$result['email']);
+             $this->session->set_userdata('logged_in',$sess_array);
             
-            // $this->load->view('home/profile_page',$result);
-            // $this->load->view('include/footer');
             redirect('custom');
            
           }

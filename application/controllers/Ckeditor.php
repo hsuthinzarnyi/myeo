@@ -104,7 +104,8 @@ class Ckeditor extends CI_Controller {
  
 	}
  
-	public function index() {
+	public function index() 
+	{
         $this->load->view('include/header');
 		$this->load->view('admin/upload_view', $this->data);
         $this->load->view('include/footer');
